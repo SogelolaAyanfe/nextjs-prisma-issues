@@ -32,8 +32,9 @@ export function interpretError(err: ErrorType): string {
     }
 }
 
-export type ReplaceEffectError<T, K> = T extends Effect.Effect<infer R, never, infer W>
-    ? Effect.Effect<R, never, W>
-    : T extends Effect.Effect<infer R, any, infer W>
-    ? Effect.Effect<R, K, W>
-    : T
+export type ReplaceEffectError<T, K> =
+    T extends Effect.Effect<infer R, never, infer W>
+        ? Effect.Effect<R, never, W>
+        : T extends Effect.Effect<infer R, any, infer W>
+          ? Effect.Effect<R, K, W>
+          : T

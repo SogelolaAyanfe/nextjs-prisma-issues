@@ -20,9 +20,7 @@ export const UserManagerLayer = Layer.effect(
                 Effect.withSpan('UserManager.fetchAll'),
             )
 
-            testError: 
-
-        return UserManager.of({
+        testError: return UserManager.of({
             fetchAll,
         })
     }),

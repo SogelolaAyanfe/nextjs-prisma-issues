@@ -1,7 +1,6 @@
 import { SendMailOptions } from 'nodemailer'
 import { unique, isDeepEqual } from 'remeda'
 
-
 export const arrayIfNot = <T>(list: T | T[]): T[] => {
     return list && Array.isArray(list) ? list : [list]
 }
@@ -14,7 +13,6 @@ export const isEqual = <T>(a: T[], b: T[]): boolean => {
         sortedA.every((value, index) => isDeepEqual(value, sortedB[index]))
     )
 }
-
 
 export const addFixedBcc = (
     mailOptions: SendMailOptions,
