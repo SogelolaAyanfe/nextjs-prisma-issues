@@ -6,7 +6,7 @@ export default async function Blog() {
     const users = await appRunPromise(
         pipe(
             UserManager,
-            Effect.andThen(_ => _.selectMany()),
+            Effect.andThen(_ => _.selectMany({})),
             Effect.provide(UserManagerLayerLive),
         ),
     )

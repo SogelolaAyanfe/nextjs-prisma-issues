@@ -26,5 +26,8 @@
                 "tabWidth": 2
             }
         }
-    ]
+    ],
+    "tailwindFunctions": ["clsx", "tw"],
+    "plugins": ["prettier-plugin-organize-imports", "prettier-plugin-tailwindcss"],
+    "tailwindStylesheet": "./styles/global.css"
 }

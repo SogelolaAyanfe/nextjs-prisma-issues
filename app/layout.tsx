@@ -1,17 +1,6 @@
 import type { Metadata } from 'next'
-import { Geist, Geist_Mono } from 'next/font/google'
-import './globals.css'
+import 'styles/global.css'
 import { Provider } from 'components/Provider'
-
-const geistSans = Geist({
-    variable: '--font-geist-sans',
-    subsets: ['latin'],
-})
-
-const geistMono = Geist_Mono({
-    variable: '--font-geist-mono',
-    subsets: ['latin'],
-})
 
 export const metadata: Metadata = {
     title: 'Create Next App',
@@ -23,9 +12,14 @@ export default function RootLayout({
 }: Readonly<{
     children: React.ReactNode
 }>) {
-    return (
-        <html lang="en">
-            <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+    return ( 
+        <html lang="en" 
+      className="dark text-zinc-950 antialiased lg:bg-zinc-100 dark:bg-zinc-900 dark:text-white dark:lg:bg-zinc-950">
+        <head>
+          <link rel="preconnect" href="https://rsms.me/" />
+          <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
+        </head>
+            <body >
                 <Provider>{children}</Provider>
             </body>
         </html>

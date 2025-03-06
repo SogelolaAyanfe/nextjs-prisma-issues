@@ -12,7 +12,7 @@ export const UserSchema = z.object({
 
 export type User = z.infer<typeof UserSchema>
 
-export const AccountSchema = z.object({
+const AccountSchema = z.object({
     userId: z.string(),
     type: z.string(),
     provider: z.string(),
