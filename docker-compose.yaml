@@ -1,5 +1,4 @@
 services:
-
   postgres:
     container_name: postgres_myapp
     image: timescale/timescaledb:latest-pg15
@@ -39,8 +38,7 @@ services:
     restart: always
     ports:
       - "8288:8288"
-    command: [ "npx", "inngest-cli", "dev", "-u", "http://localhost:3000/api/inngest"]
-
+    command: ["npx", "inngest-cli", "dev", "-u", "http://localhost:3000/api/inngest"]
 
 volumes:
   db_data: {}

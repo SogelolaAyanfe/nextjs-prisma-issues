@@ -1,38 +1,33 @@
 {
-    "extends": "next/core-web-vitals",
-    "plugins": [
-      "no-relative-import-paths",
-      "no-floating-promise",
-      "unused-imports"
+  "extends": "next/core-web-vitals",
+  "plugins": ["no-relative-import-paths", "no-floating-promise", "unused-imports"],
+  "rules": {
+    "no-relative-import-paths/no-relative-import-paths": [
+      "error",
+      {
+        "allowSameFolder": false
+      }
     ],
-    "rules": { 
-      "no-relative-import-paths/no-relative-import-paths": [
-        "error",
-        {
-          "allowSameFolder": false
-        }
-      ],
-      "sort-imports": [
-        "warn",
-        {
-          "ignoreCase": false,
-          "ignoreDeclarationSort": true,
-          "ignoreMemberSort": false
-        }
-      ],
-      "no-floating-promise/no-floating-promise": "error",
-      "@typescript-eslint/no-unused-vars": "off",
-      "unused-imports/no-unused-imports": "error",
-      "unused-imports/no-unused-vars": [
-        "warn",
-        {
-          "vars": "all",
-          "varsIgnorePattern": "^_",
-          "args": "after-used",
-          "argsIgnorePattern": "^_"
-        }
-      ],
-      "eol-last": ["error", "always"]
-    }
+    "sort-imports": [
+      "warn",
+      {
+        "ignoreCase": false,
+        "ignoreDeclarationSort": true,
+        "ignoreMemberSort": false
+      }
+    ],
+    "no-floating-promise/no-floating-promise": "error",
+    "@typescript-eslint/no-unused-vars": "off",
+    "unused-imports/no-unused-imports": "error",
+    "unused-imports/no-unused-vars": [
+      "warn",
+      {
+        "vars": "all",
+        "varsIgnorePattern": "^_",
+        "args": "after-used",
+        "argsIgnorePattern": "^_"
+      }
+    ],
+    "eol-last": ["error", "always"]
   }
-  
+}

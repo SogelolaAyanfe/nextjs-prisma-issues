@@ -10,7 +10,7 @@ export const UserRepositoryLayer = Layer.effect(
     UserRepository,
     Effect.gen(function* () {
         const prismaClient = yield* PrismaClient
- 
+
         const selectMany: UserRepository['selectMany'] = args =>
             pipe(
                 prismaClient.wrap(_ => _.user.findMany(args)),
