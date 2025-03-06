@@ -4,25 +4,7 @@
     "arrowParens": "avoid",
     "trailingComma": "all",
     "singleQuote": true,
-    "semi": false,
-    "importOrder": [
-        "^react(.*)$",
-        "^@chakra-ui/(.*)$",
-        "^next(.*)$",
-        "<THIRD_PARTY_MODULES>",
-        "^entities/(.*)$",
-        "^routes$",
-        "^lib/(.*)$",
-        "^hocs/(.*)$",
-        "^hooks/(.*)$",
-        "^containers/(.*)/hooks$",
-        "^containers/(.*)/queries$",
-        "^containers/(.*)$",
-        "^components/(.*)$",
-        "^theme/(.*)$",
-        "^public/(.*)$",
-        "^[./]"
-    ],
+    "semi": false, 
     "importOrderGroupNamespaceSpecifiers": true,
     "overrides": [
         {
