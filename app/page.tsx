@@ -17,19 +17,25 @@ const Home = async () => {
                     Sign in
                 </Heading>
 
-                <Fieldset className="mb-6">
+                <Fieldset className="mb-8">
                     <FieldGroup>
                         <Field>
                             <Label>Email</Label>
-                            <Input type="text" placeholder="Enter your email" />
+                            <Input type="text" placeholder="Enter your email" size="lg" />
                         </Field>
                         <Field>
                             <Label>Password</Label>
-                            <Input type="password" placeholder="Enter your password" />
+                            <Input
+                                type="password"
+                                placeholder="Enter your password"
+                                size="lg"
+                            />
                         </Field>
                     </FieldGroup>
                 </Fieldset>
-                <Button color="indigo">Sign in</Button>
+                <Button size="lg" color="indigo">
+                    Sign in
+                </Button>
             </Card>
         </main>
     )
