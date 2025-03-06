@@ -1,4 +1,4 @@
-import { Effect, Layer } from 'effect'
+import { Effect, Layer, pipe } from 'effect'
 import {
     UserRepository,
     UserRepositoryError,
@@ -10,23 +10,22 @@ export const UserRepositoryLayer = Layer.effect(
     UserRepository,
     Effect.gen(function* () {
         const prismaClient = yield* PrismaClient
-
-        const fetchAll: UserRepository['fetchAll'] = () =>
-            prismaClient
-                .wrap(_ => _.user.findMany())
-                .pipe(
-                    Effect.catchAll(
-                        error =>
-                            new UserRepositoryError({
-                                error,
-                                message: 'Unable to fetch all users',
-                            }),
-                    ),
-                    Effect.withSpan('UserRepository.fetchAll'),
-                )
+ 
+        const selectMany: UserRepository['selectMany'] = args =>
+            pipe(
+                prismaClient.wrap(_ => _.user.findMany(args)),
+                Effect.catchAll(
+                    error =>
+                        new UserRepositoryError({
+                            error,
+                            message: 'Unable to fetch all users',
+                        }),
+                ),
+                Effect.withSpan('UserRepository.selectMany'),
+            ) as any
 
         return UserRepository.of({
-            fetchAll,
+            selectMany,
         })
     }),
 )

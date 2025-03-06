@@ -3,7 +3,7 @@ import { Vendor } from 'modules/domain/vendor-manager/entities'
 import { VendorManagerError } from 'modules/domain/vendor-manager/error'
 
 export type VendorManager = {
-    fetchAll: (args: {}) => Effect.Effect<Vendor[], VendorManagerError>
+    selectMany: (args: {}) => Effect.Effect<Vendor[], VendorManagerError>
     fetchById: (args: { id: string }) => Effect.Effect<Vendor, VendorManagerError>
     create: (args: {
         vendor: Omit<Vendor, 'id' | 'createdAt' | 'updatedAt' | 'status'>

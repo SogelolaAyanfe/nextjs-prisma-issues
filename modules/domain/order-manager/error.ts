@@ -1,6 +1,4 @@
-import { Data } from 'effect'
+import { EffectError } from 'lib/effect/error'
 
-export class OrderManagerError extends Data.TaggedError('OrderManagerError')<{
-    message: string
-    cause?: unknown
-}> {}
+export class OrderManagerError extends EffectError('OrderManagerError') {}
+

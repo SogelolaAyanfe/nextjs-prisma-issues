@@ -1,6 +1,3 @@
-import { Data } from 'effect'
+import { EffectError } from 'lib/effect/error'
 
-export class ShippingManagerError extends Data.TaggedError('ShippingManagerError')<{
-    message: string
-    cause?: unknown
-}> {}
+export class ShippingManagerError extends EffectError('ShippingManagerError') {}

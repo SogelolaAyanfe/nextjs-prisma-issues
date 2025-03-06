@@ -3,7 +3,7 @@ import { Product } from 'modules/domain/product-manager/entities'
 import { ProductManagerError } from 'modules/domain/product-manager/error'
 
 export type ProductManager = {
-    fetchAll: () => Effect.Effect<Product[], ProductManagerError>
+    selectMany: () => Effect.Effect<Product[], ProductManagerError>
     fetchById: (id: string) => Effect.Effect<Product, ProductManagerError>
     fetchByVendor: (vendorId: string) => Effect.Effect<Product[], ProductManagerError>
     fetchByCategory: (categoryId: string) => Effect.Effect<Product[], ProductManagerError>

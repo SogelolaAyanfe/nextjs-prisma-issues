@@ -3,7 +3,7 @@ import { Order } from 'modules/domain/order-manager/entities'
 import { OrderManagerError } from 'modules/domain/order-manager/error'
 
 export type OrderManager = {
-    fetchAll: (args: {}) => Effect.Effect<Order[], OrderManagerError>
+    selectMany: (args: {}) => Effect.Effect<Order[], OrderManagerError>
     fetchById: (args: { id: string }) => Effect.Effect<Order, OrderManagerError>
     fetchByUser: (args: { userId: string }) => Effect.Effect<Order[], OrderManagerError>
     create: (args: {

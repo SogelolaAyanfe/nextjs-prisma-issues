@@ -3,7 +3,7 @@ import { User } from 'modules/domain/user-manager/entities'
 import { UserManagerError } from 'modules/domain/user-manager/error'
 
 export type UserManager = {
-    fetchAll: (args: {}) => Effect.Effect<User[], UserManagerError>
+    selectMany: (args: {}) => Effect.Effect<User[], UserManagerError>
 }
 
 export const UserManager = Context.GenericTag<UserManager>('user-manager')

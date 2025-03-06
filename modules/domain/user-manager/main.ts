@@ -8,20 +8,26 @@ export const UserManagerLayer = Layer.effect(
     Effect.gen(function* () {
         const userRepository = yield* UserRepository
 
-        const fetchAll: UserManager['fetchAll'] = () =>
-            userRepository.fetchAll().pipe(
-                Effect.catchAll(
-                    error =>
-                        new UserManagerError({
-                            error,
-                            message: 'Unable to fetch all users',
-                        }),
-                ),
-                Effect.withSpan('UserManager.fetchAll'),
-            )
+        const selectMany: UserManager['selectMany'] = () =>
+            userRepository
+                .selectMany({
+                    where: {
+                        id: '1',
+                    },
+                })
+                .pipe(
+                    Effect.catchAll(
+                        error =>
+                            new UserManagerError({
+                                error,
+                                message: 'Unable to fetch all users',
+                            }),
+                    ),
+                    Effect.withSpan('UserManager.selectMany'),
+                )
 
         testError: return UserManager.of({
-            fetchAll,
+            selectMany,
         })
     }),
 )
