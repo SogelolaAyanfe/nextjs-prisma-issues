@@ -1,6 +1,6 @@
+import { Provider } from 'components/Provider'
 import type { Metadata } from 'next'
 import 'styles/global.css'
-import { Provider } from 'components/Provider'
 
 export const metadata: Metadata = {
     title: 'Create Next App',
@@ -12,14 +12,16 @@ export default function RootLayout({
 }: Readonly<{
     children: React.ReactNode
 }>) {
-    return ( 
-        <html lang="en" 
-      className="dark text-zinc-950 antialiased lg:bg-zinc-100 dark:bg-zinc-900 dark:text-white dark:lg:bg-zinc-950">
-        <head>
-          <link rel="preconnect" href="https://rsms.me/" />
-          <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
-        </head>
-            <body >
+    return (
+        <html
+            lang="en"
+            className="dark text-zinc-950 antialiased lg:bg-zinc-100 dark:bg-zinc-900 dark:text-white dark:lg:bg-zinc-950"
+        >
+            <head>
+                <link rel="preconnect" href="https://rsms.me/" />
+                <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
+            </head>
+            <body>
                 <Provider>{children}</Provider>
             </body>
         </html>

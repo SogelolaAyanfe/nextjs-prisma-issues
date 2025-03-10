@@ -1,6 +1,6 @@
-import { pipe, Effect } from 'effect'
-import { appRunPromise } from 'modules/infrastructure/runtime'
+import { Effect, pipe } from 'effect'
 import { UserManager, UserManagerLayerLive } from 'modules/domain/user-manager'
+import { appRunPromise } from 'modules/infrastructure/runtime'
 
 export default async function Blog() {
     const users = await appRunPromise(

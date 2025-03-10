@@ -15,6 +15,7 @@
     "@headlessui/react": "^2.2.0",
     "@heroicons/react": "^2.2.0",
     "@prisma/client": "^6.3.1",
+    "@tailwindcss/oxide-darwin-arm64": "^4.0.11",
     "@trpc/client": "^11.0.0-rc.553",
     "@trpc/next": "^11.0.0-rc.553",
     "@trpc/react-query": "^11.0.0-rc.553",
@@ -39,6 +40,7 @@
     "@types/nodemailer": "^6.4.17",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "autoprefixer": "^10.4.20",
     "eslint": "^9",
     "eslint-config-next": "15.1.6",
     "eslint-plugin-no-floating-promise": "^2.0.0",
@@ -49,7 +51,7 @@
     "prettier": "^3.5.2",
     "prettier-plugin-organize-imports": "^4.1.0",
     "prettier-plugin-tailwindcss": "^0.6.11",
-    "tailwindcss": "^4.0.6",
+    "tailwindcss": "^4.0.11",
     "typescript": "^5"
   },
   "prisma": {
