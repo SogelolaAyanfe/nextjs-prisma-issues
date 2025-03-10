@@ -8,7 +8,8 @@ import {
     ShieldCheckIcon,
     UserIcon,
 } from '@heroicons/react/16/solid'
-import { HomeIcon, QuestionMarkCircleIcon } from '@heroicons/react/20/solid'
+import { HomeIcon } from '@heroicons/react/20/solid'
+import { signOut } from 'auth'
 import { Avatar } from 'components/avatar'
 import {
     Dropdown,
@@ -29,7 +30,6 @@ import {
     SidebarItem,
     SidebarLabel,
     SidebarSection,
-    SidebarSpacer,
 } from 'components/sidebar'
 import { SidebarLayout } from 'components/sidebar-layout'
 import { routes } from 'routes'
@@ -120,16 +120,6 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                                     </DropdownItem>
                                 </DropdownMenu>
                             </Dropdown>
-                            {/* <SidebarSection className="max-lg:hidden">
-                            <SidebarItem href="/search">
-                                <MagnifyingGlassIcon />
-                                <SidebarLabel>Search</SidebarLabel>
-                            </SidebarItem>
-                            <SidebarItem href="/inbox">
-                                <InboxIcon />
-                                <SidebarLabel>Inbox</SidebarLabel>
-                            </SidebarItem>
-                        </SidebarSection> */}
                         </SidebarHeader>
                         <SidebarBody>
                             <SidebarSection>
@@ -144,13 +134,6 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                                 <SidebarHeading>Apps</SidebarHeading>
                                 <SidebarItem href="/events/2">
                                     Inventory Alerts
-                                </SidebarItem>
-                            </SidebarSection>
-                            <SidebarSpacer />
-                            <SidebarSection>
-                                <SidebarItem href="/support">
-                                    <QuestionMarkCircleIcon />
-                                    <SidebarLabel>Support</SidebarLabel>
                                 </SidebarItem>
                             </SidebarSection>
                         </SidebarBody>
@@ -194,10 +177,19 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                                         <DropdownLabel>Share feedback</DropdownLabel>
                                     </DropdownItem>
                                     <DropdownDivider />
-                                    <DropdownItem href="/logout">
-                                        <ArrowRightStartOnRectangleIcon />
-                                        <DropdownLabel>Sign out</DropdownLabel>
-                                    </DropdownItem>
+
+                                    <form
+                                        action={async () => {
+                                            'use server'
+                                            await signOut()
+                                        }}
+                                        className="col-span-full grid grid-cols-[auto_1fr_1.5rem_.5rem_auto]"
+                                    >
+                                        <DropdownItem>
+                                            <ArrowRightStartOnRectangleIcon />
+                                            <DropdownLabel>Sign out</DropdownLabel>
+                                        </DropdownItem>
+                                    </form>
                                 </DropdownMenu>
                             </Dropdown>
                         </SidebarFooter>

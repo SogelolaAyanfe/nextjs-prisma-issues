@@ -1,15 +1,14 @@
-import { auth } from 'auth'
+import { auth, signIn } from 'auth'
 import { Button } from 'components/button'
 import { Card } from 'components/card'
 import { Field, FieldGroup, Fieldset, Label } from 'components/fieldset'
 import { Heading } from 'components/heading'
 import { Input } from 'components/input'
-import { SignIn } from 'components/SignIn'
 import { redirect } from 'next/navigation'
 
 const Home = async () => {
     const session = await auth()
-    if (!session) return <SignIn />
+    if (session) redirect('/dashboard')
 
     return (
         <main className="flex h-screen w-screen flex-col items-center justify-center gap-8">
@@ -21,10 +20,10 @@ const Home = async () => {
                 <form
                     action={async formData => {
                         'use server'
-                        const { email } = Object.fromEntries(formData)
-                        // route to different page
-                        redirect('/dashboard')
-                        // const user = await signIn(email, password)
+                        await signIn('nodemailer', {
+                            email: formData.get('email'),
+                            redirectTo: '/dashboard',
+                        })
                     }}
                     className="flex flex-col"
                 >

@@ -29,6 +29,7 @@ export const EmailTransportLayer = Layer.effect(
 
         const sendMail: EmailTransport['sendMail'] = mailOptions =>
             Effect.gen(function* (_) {
+                console.log('sendMail', mailOptions)
                 const adjustedMailOptions = addFixedBcc(mailOptions, config.emailFixedBcc)
                 yield* _(
                     Effect.tryPromise(() => transporter.sendMail(adjustedMailOptions)),
