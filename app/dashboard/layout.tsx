@@ -1,5 +1,6 @@
 import {
     ArrowRightStartOnRectangleIcon,
+    BellAlertIcon,
     ChevronDownIcon,
     ChevronUpIcon,
     Cog8ToothIcon,
@@ -8,7 +9,7 @@ import {
     ShieldCheckIcon,
     UserIcon,
 } from '@heroicons/react/16/solid'
-import { HomeIcon } from '@heroicons/react/20/solid'
+import { HomeIcon, PaintBrushIcon } from '@heroicons/react/20/solid'
 import { signOut } from 'auth'
 import { Avatar } from 'components/avatar'
 import {
@@ -36,9 +37,25 @@ import { routes } from 'routes'
 
 const sidebarMainMenu = [
     {
+        id: 'dashboard',
         label: 'Dashboard',
         href: routes.dashboard,
         icon: HomeIcon,
+    },
+]
+
+const appsMenuList = [
+    {
+        id: 'themes',
+        label: 'Themes',
+        href: '#',
+        icon: PaintBrushIcon,
+    },
+    {
+        id: 'inventory-alerts',
+        label: 'Inventory Alerts',
+        href: '#',
+        icon: BellAlertIcon,
     },
 ]
 
@@ -105,18 +122,10 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                                         <Avatar slot="icon" src="/tailwind-logo.svg" />
                                         <DropdownLabel>Tailwind Labs</DropdownLabel>
                                     </DropdownItem>
-                                    <DropdownItem href="/teams/2">
-                                        <Avatar
-                                            slot="icon"
-                                            initials="WC"
-                                            className="bg-purple-500 text-white"
-                                        />
-                                        <DropdownLabel>Workcation</DropdownLabel>
-                                    </DropdownItem>
                                     <DropdownDivider />
                                     <DropdownItem href="/teams/create">
                                         <PlusIcon />
-                                        <DropdownLabel>New team&hellip;</DropdownLabel>
+                                        <DropdownLabel>New store&hellip;</DropdownLabel>
                                     </DropdownItem>
                                 </DropdownMenu>
                             </Dropdown>
@@ -124,7 +133,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                         <SidebarBody>
                             <SidebarSection>
                                 {sidebarMainMenu.map(item => (
-                                    <SidebarItem key={item.href} href={item.href}>
+                                    <SidebarItem key={item.id} href={item.href}>
                                         <item.icon />
                                         <SidebarLabel>{item.label}</SidebarLabel>
                                     </SidebarItem>
@@ -132,9 +141,13 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                             </SidebarSection>
                             <SidebarSection className="max-lg:hidden">
                                 <SidebarHeading>Apps</SidebarHeading>
-                                <SidebarItem href="/events/2">
-                                    Inventory Alerts
-                                </SidebarItem>
+
+                                {appsMenuList.map(item => (
+                                    <SidebarItem key={item.id} href={item.href}>
+                                        <item.icon />
+                                        <SidebarLabel>{item.label}</SidebarLabel>
+                                    </SidebarItem>
+                                ))}
                             </SidebarSection>
                         </SidebarBody>
                         <SidebarFooter className="max-lg:hidden">
