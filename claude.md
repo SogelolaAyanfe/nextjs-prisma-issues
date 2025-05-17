@@ -78,7 +78,7 @@ To run the script, use `npx tsx basic.script.ts`
 
 ## Code Style
 
-- **Imports**: Ordered by: React, Tailwind, Next, third party, project modules
+- **Imports**: Ordered by: React, Tailwind, Next 14(app directory), third party, project modules
 - **Formatting**: 90 char width, 4 spaces, single quotes, no semicolons
 - **Naming**: PascalCase for components, camelCase for functions/variables
 - **React Components**: Use functional components with TypeScript interfaces
