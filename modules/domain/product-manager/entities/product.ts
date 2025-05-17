@@ -1,5 +1,12 @@
 import { z } from 'zod'
 
+export const ProductAvailabilityStatusEnum = z.enum([
+    'IN_STOCK',
+    'LOW_STOCK',
+    'LIMITED_AVAILABILITY',
+])
+export type ProductAvailabilityStatus = z.infer<typeof ProductAvailabilityStatusEnum>
+
 export const ProductSchema = z.object({
     id: z.string(),
     vendorId: z.string(),
@@ -13,6 +20,7 @@ export const ProductSchema = z.object({
     stock: z.number().int().nonnegative(),
     sku: z.string(),
     status: z.enum(['draft', 'published', 'archived']),
+    availabilityStatus: ProductAvailabilityStatusEnum.default('IN_STOCK'),
     createdAt: z.date(),
     updatedAt: z.date(),
 })
