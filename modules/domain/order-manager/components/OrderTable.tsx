@@ -31,7 +31,7 @@ export const OrderTable = ({
                         <TableHeader>Customer</TableHeader>
                         <TableHeader>Status</TableHeader>
                         <TableHeader>Total</TableHeader>
-                        <TableHeader> </TableHeader>
+                        <TableHeader></TableHeader>
                     </TableRow>
                 </TableHead>
                 <TableBody>
