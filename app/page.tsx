@@ -1,4 +1,5 @@
 import { auth } from 'auth'
+import { AppShell } from 'components/AppShell'
 import { redirect } from 'next/navigation'
 
 const Home = async () => {
@@ -6,7 +7,9 @@ const Home = async () => {
     if (!session) redirect('/sign-in')
 
     return (
-        <main className="flex h-screen w-screen flex-col items-center justify-center gap-8"></main>
+        <AppShell>
+            <h1 className="text-4xl font-bold">Welcome to the App</h1>
+        </AppShell>
     )
 }
 
