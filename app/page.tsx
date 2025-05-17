@@ -1,9 +1,4 @@
-import { auth, signIn } from 'auth'
-import { Button } from 'components/button'
-import { Card } from 'components/card'
-import { Field, FieldGroup, Fieldset, Label } from 'components/fieldset'
-import { Heading } from 'components/heading'
-import { Input } from 'components/input'
+import { auth } from 'auth'
 import { redirect } from 'next/navigation'
 
 const Home = async () => {
@@ -11,9 +6,7 @@ const Home = async () => {
     if (!session) redirect('/sign-in')
 
     return (
-        <main className="flex h-screen w-screen flex-col items-center justify-center gap-8">
-            
-        </main>
+        <main className="flex h-screen w-screen flex-col items-center justify-center gap-8"></main>
     )
 }
 
