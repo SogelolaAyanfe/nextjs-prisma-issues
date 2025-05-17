@@ -39,7 +39,7 @@ const sidebarMainMenu = [
     {
         id: 'dashboard',
         label: 'Dashboard',
-        href: routes.dashboard,
+        href: routes.store.dashboard(),
         icon: HomeIcon,
     },
 ]
