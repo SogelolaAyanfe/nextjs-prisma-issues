@@ -1,5 +1,5 @@
 import { auth } from 'auth'
-import { AppShell } from 'components/AppShell'
+import { AppShell } from 'components/app-shell'
 import { redirect } from 'next/navigation'
 
 const Home = async () => {
