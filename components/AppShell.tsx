@@ -24,7 +24,7 @@ const AppSidebar = () => {
             <SidebarHeader>
                 <SidebarSection>
                     <SidebarItem href="/">
-                        <SidebarLabel>App</SidebarLabel>
+                        <SidebarLabel>App Logo</SidebarLabel>
                     </SidebarItem>
                 </SidebarSection>
             </SidebarHeader>
