@@ -20,8 +20,8 @@ import { SidebarLayout } from 'components/sidebar-layout'
 
 const AppSidebar = () => {
     return (
-        <Sidebar>
-            <SidebarHeader>
+        <Sidebar className="space-y-3 pt-5">
+            <SidebarHeader className="border-none">
                 <SidebarSection>
                     <SidebarItem href="/">
                         <SidebarLabel>App Logo</SidebarLabel>
@@ -29,7 +29,7 @@ const AppSidebar = () => {
                 </SidebarSection>
             </SidebarHeader>
             <SidebarBody>
-                <SidebarSection>
+                <SidebarSection className="space-y-5">
                     <SidebarItem href="/">
                         <HomeIcon data-slot="icon" />
                         <SidebarLabel>Home</SidebarLabel>
@@ -66,7 +66,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
             sidebar={<AppSidebar />}
             navbar={<div className="text-lg font-semibold">My App</div>}
         >
-            <main>{children}</main>
+            {children}
         </SidebarLayout>
     )
 }
