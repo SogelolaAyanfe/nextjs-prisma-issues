@@ -6,7 +6,7 @@ export const userMock: User = {
     name: 'John Doe',
     email: 'john.doe@example.com',
     emailVerified: new Date(),
-    image: 'https://via.placeholder.com/150',
+    image: 'https://images.pexels.com/photos/1598505/pexels-photo-1598505.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
     createdAt: new Date(),
     updatedAt: new Date(),
 }
