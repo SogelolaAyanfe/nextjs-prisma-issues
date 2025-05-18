@@ -29,10 +29,13 @@ const availabilityConfig: Record<
 }
 
 interface ProductMiniCardProps {
-    product: Product
+    product: Pick<
+        Product,
+        'name' | 'images' | 'price' | 'salePrice' | 'availabilityStatus'
+    >
 }
 
-export function ProductMiniCard({ product }: ProductMiniCardProps) {
+export const ProductMiniCard = ({ product }: ProductMiniCardProps) => {
     const availability = availabilityConfig[product.availabilityStatus]
 
     return (
