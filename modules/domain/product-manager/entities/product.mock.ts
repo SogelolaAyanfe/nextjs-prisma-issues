@@ -3,7 +3,7 @@ import { Product } from 'modules/domain/product-manager/entities/product'
 export const productMock: Product = {
     id: '1',
     vendorId: '1',
-    name: 'Product 1',
+    name: 'New Baggy Jeans',
     description: 'Description 1',
     price: 100,
     discountedPrice: 0,
