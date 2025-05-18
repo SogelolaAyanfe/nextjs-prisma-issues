@@ -1,8 +1,9 @@
+import { faker } from '@faker-js/faker'
 import { Product } from 'modules/domain/product-manager/entities/product'
 
 export const productMock: Product = {
-    id: '1',
-    vendorId: '1',
+    id: faker.string.uuid(),
+    vendorId: faker.string.uuid(),
     name: 'New Baggy Jeans',
     description: 'Description 1',
     price: 100,
