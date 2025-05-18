@@ -17,7 +17,7 @@ export const ProductSchema = z.object({
     name: z.string(),
     description: z.string(),
     price: z.number().positive(),
-    salePrice: z.number().positive().nullable(),
+    discountedPrice: z.number().positive().nullable(),
     images: z.array(z.string().url()),
     categoryId: z.string(),
     attributes: z.record(z.string()),
@@ -27,6 +27,7 @@ export const ProductSchema = z.object({
     availabilityStatus: ProductAvailabilityStatusEnum.default('IN_STOCK'),
     createdAt: z.date(),
     updatedAt: z.date(),
+    userId: z.string(),
 })
 
 export type Product = z.infer<typeof ProductSchema>

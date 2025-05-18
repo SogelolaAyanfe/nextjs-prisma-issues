@@ -1,4 +1,5 @@
 import { auth } from 'auth'
+import { FeaturedProducts } from 'blocks/product/featured-products'
 import { AppShell } from 'components/app-shell'
 import { redirect } from 'next/navigation'
 
@@ -8,7 +9,7 @@ const Home = async () => {
 
     return (
         <AppShell>
-            <h1 className="text-4xl font-bold">Welcome to the App</h1>
+            <FeaturedProducts />
         </AppShell>
     )
 }

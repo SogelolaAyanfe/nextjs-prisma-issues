@@ -6,6 +6,7 @@ import {
     ProductAvailabilityStatus,
 } from 'modules/domain/product-manager/entities/product'
 import Image from 'next/image'
+import Link from 'next/link'
 
 const availabilityConfig: Record<
     ProductAvailabilityStatus,
@@ -28,10 +29,10 @@ const availabilityConfig: Record<
     },
 }
 
-interface ProductMiniCardProps {
+type ProductMiniCardProps = {
     product: Pick<
         Product,
-        'name' | 'images' | 'price' | 'salePrice' | 'availabilityStatus'
+        'name' | 'images' | 'price' | 'discountedPrice' | 'availabilityStatus'
     >
 }
 
@@ -39,9 +40,12 @@ export const ProductMiniCard = ({ product }: ProductMiniCardProps) => {
     const availability = availabilityConfig[product.availabilityStatus]
 
     return (
-        <div className="group relative flex flex-col overflow-hidden rounded-lg border border-zinc-200 bg-white dark:border-zinc-800 dark:bg-zinc-950">
+        <Link
+            href="#"
+            className="group relative flex cursor-pointer flex-col overflow-hidden"
+        >
             {/* Image container */}
-            <div className="aspect-h-1 aspect-w-1 relative bg-zinc-100 dark:bg-zinc-800">
+            <div className="relative w-full bg-zinc-100 pb-[120%] dark:bg-zinc-800 overflow-hidden rounded-lg border border-zinc-200 dark:border-zinc-800">
                 <Image
                     src={product.images[0]}
                     alt={product.name}
@@ -51,7 +55,7 @@ export const ProductMiniCard = ({ product }: ProductMiniCardProps) => {
             </div>
 
             {/* Content */}
-            <div className="flex flex-1 flex-col space-y-2 p-4">
+            <div className="flex flex-1 flex-col space-y-2 py-4">
                 <h3 className="text-sm font-medium text-zinc-900 dark:text-white">
                     {product.name}
                 </h3>
@@ -59,12 +63,12 @@ export const ProductMiniCard = ({ product }: ProductMiniCardProps) => {
                 <div className="flex flex-1 flex-col justify-end">
                     {/* Price */}
                     <p className="text-base font-medium text-zinc-900 dark:text-white">
-                        {product.salePrice ? (
+                        {product.discountedPrice ? (
                             <>
                                 <span className="mr-2 text-zinc-500 line-through">
                                     ${product.price}
                                 </span>
-                                ${product.salePrice}
+                                ${product.discountedPrice}
                             </>
                         ) : (
                             `$${product.price}`
@@ -84,6 +88,6 @@ export const ProductMiniCard = ({ product }: ProductMiniCardProps) => {
                     </div>
                 </div>
             </div>
-        </div>
+        </Link>
     )
 }
