@@ -12,7 +12,7 @@ const products = Array.from({ length: 4 }, () => ({
 export const FeaturedProducts = () => {
     return (
         <div className="w-full">
-            <h2 className="mb-6 text-2xl font-bold tracking-tight text-zinc-900 dark:text-white">
+            <h2 className="mb-12 text-2xl font-bold tracking-tight text-zinc-900 dark:text-white">
                 Featured Products
             </h2>
             <div className="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3">
