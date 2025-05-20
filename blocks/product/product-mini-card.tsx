@@ -6,7 +6,7 @@ import {
     Product,
     ProductAvailabilityStatus,
 } from 'modules/domain/product-manager/entities/product'
-import { userMock } from 'modules/domain/user-manager/entities/user.mock'
+import { vendorMock } from 'modules/domain/vendor-manager/entities/vendor.mock'
 import Image from 'next/image'
 import Link from 'next/link'
 import { routes } from 'routes'
@@ -46,16 +46,16 @@ export const ProductMiniCard = ({ product }: ProductMiniCardProps) => {
         <div className="relative space-y-2">
             <Link
                 className="flex cursor-pointer space-x-2"
-                href={routes.store.home({ id: 'some id' })}
+                href={routes.store.home({ id: vendorMock.id })}
             >
-                <Avatar src={userMock.image} className="size-9" />
+                <Avatar src={vendorMock.logo} className="size-9" />
                 <div className="flex flex-col">
                     <p className="text-sm font-medium text-zinc-900 dark:text-white">
-                        {userMock.name}
+                        {vendorMock.name}
                     </p>
 
                     <p className="text-xs text-zinc-500 dark:text-zinc-300">
-                        Ibadan, Nigeria
+                        {vendorMock.address}
                     </p>
                 </div>
             </Link>
