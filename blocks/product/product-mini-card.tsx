@@ -9,6 +9,7 @@ import {
 import { userMock } from 'modules/domain/user-manager/entities/user.mock'
 import Image from 'next/image'
 import Link from 'next/link'
+import { routes } from 'routes'
 
 const availabilityConfig: Record<
     ProductAvailabilityStatus,
@@ -43,7 +44,10 @@ export const ProductMiniCard = ({ product }: ProductMiniCardProps) => {
 
     return (
         <div className="relative space-y-2">
-            <Link className="flex cursor-pointer space-x-2" href="#">
+            <Link
+                className="flex cursor-pointer space-x-2"
+                href={routes.store.home({ id: 'some id' })}
+            >
                 <Avatar src={userMock.image} className="size-9" />
                 <div className="flex flex-col">
                     <p className="text-sm font-medium text-zinc-900 dark:text-white">
@@ -57,7 +61,7 @@ export const ProductMiniCard = ({ product }: ProductMiniCardProps) => {
             </Link>
             <Link
                 href="#"
-                className="relative flex cursor-pointer flex-col overflow-hidden group"
+                className="group relative flex cursor-pointer flex-col overflow-hidden"
             >
                 {/* Image container */}
                 <div className="relative w-full overflow-hidden rounded-lg border border-zinc-200 bg-zinc-100 pb-[120%] dark:border-zinc-800 dark:bg-zinc-800">
