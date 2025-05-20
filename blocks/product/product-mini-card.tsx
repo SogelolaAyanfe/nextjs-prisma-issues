@@ -43,12 +43,12 @@ export const ProductMiniCard = ({ product }: ProductMiniCardProps) => {
     const availability = availabilityConfig[product.availabilityStatus]
 
     return (
-        <div className="relative space-y-2">
+        <div className="relative space-y-3">
             <Link
-                className="flex cursor-pointer space-x-2"
+                className="flex cursor-pointer items-center space-x-2 px-1"
                 href={routes.store.home({ id: vendorMock.id })}
             >
-                <Avatar src={vendorMock.logo} className="size-9" />
+                <Avatar src={vendorMock.logo} className="size-8" />
                 <div className="flex flex-col">
                     <p className="text-sm font-medium text-zinc-900 dark:text-white">
                         {vendorMock.name}
