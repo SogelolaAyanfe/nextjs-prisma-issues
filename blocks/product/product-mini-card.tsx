@@ -45,7 +45,7 @@ export const ProductMiniCard = ({ product }: ProductMiniCardProps) => {
     return (
         <div className="relative space-y-3">
             <Link
-                className="flex cursor-pointer items-center space-x-2 px-1"
+                className="flex cursor-pointer items-center space-x-2"
                 href={routes.store.home({ id: vendorMock.id })}
             >
                 <Avatar src={vendorMock.logo} className="size-8" />
