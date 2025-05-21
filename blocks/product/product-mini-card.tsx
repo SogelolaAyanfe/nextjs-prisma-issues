@@ -9,6 +9,7 @@ import {
 import { vendorMock } from 'modules/domain/vendor-manager/entities/vendor.mock'
 import Image from 'next/image'
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 import { routes } from 'routes'
 
 const availabilityConfig: Record<
@@ -38,27 +39,38 @@ type ProductMiniCardProps = {
         'name' | 'images' | 'price' | 'discountedPrice' | 'availabilityStatus'
     >
 }
+const useIsStorePage = () => {
+    const pathname = usePathname()
+    const storeRoutePattern = routes.store.home({ id: ':id' })
+    const isStorePage = pathname.match(
+        new RegExp(storeRoutePattern.replace(':id', '[^/]+').replace('/home', '')),
+    )
+    return isStorePage
+}
 
 export const ProductMiniCard = ({ product }: ProductMiniCardProps) => {
     const availability = availabilityConfig[product.availabilityStatus]
+    const isStorePage = useIsStorePage()
 
     return (
         <div className="relative space-y-3">
-            <Link
-                className="flex cursor-pointer items-center space-x-2"
-                href={routes.store.home({ id: vendorMock.id })}
-            >
-                <Avatar src={vendorMock.logo} className="size-8" />
-                <div className="flex flex-col">
-                    <p className="text-sm font-medium text-zinc-900 dark:text-white">
-                        {vendorMock.name}
-                    </p>
+            {!isStorePage && (
+                <Link
+                    className="flex cursor-pointer items-center space-x-2"
+                    href={routes.store.home({ id: vendorMock.id })}
+                >
+                    <Avatar src={vendorMock.logo} className="size-8" />
+                    <div className="flex flex-col">
+                        <p className="text-sm font-medium text-zinc-900 dark:text-white">
+                            {vendorMock.name}
+                        </p>
 
-                    <p className="text-xs text-zinc-500 dark:text-zinc-300">
-                        {vendorMock.address}
-                    </p>
-                </div>
-            </Link>
+                        <p className="text-xs text-zinc-500 dark:text-zinc-300">
+                            {vendorMock.address}
+                        </p>
+                    </div>
+                </Link>
+            )}
             <Link
                 href="#"
                 className="group relative flex cursor-pointer flex-col overflow-hidden"

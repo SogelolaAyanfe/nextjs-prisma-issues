@@ -2,7 +2,7 @@ import { faker } from '@faker-js/faker'
 import { Vendor, VendorStatus } from 'modules/domain/vendor-manager/entities/vendor'
 
 export const vendorMock: Vendor = {
-    id: faker.string.uuid(),
+    id: 'random-id',
     name: 'Nike Store',
     description:
         'Nike store is the brand of online store that provides you with quality and affordable jewelries and sunglasses for both male and female.',

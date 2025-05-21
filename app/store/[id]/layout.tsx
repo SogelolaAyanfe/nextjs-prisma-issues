@@ -25,13 +25,13 @@ const StoreHeader = () => {
 
             <div className="flex flex-col space-y-6">
                 <div className="flex gap-5">
-                    <div className="relative mt-[-30px] flex transform gap-5">
+                    <div className="relative mt-[-28px] flex transform gap-5">
                         <Avatar
                             src={vendorMock.logo}
                             className="size-15 border-2 border-white xl:size-30"
                         />
                     </div>
-                    <div className="flex flex-col gap-[1px] pt-1">
+                    <div className="flex flex-col pt-1">
                         <Heading className="text-xxl font-bold">
                             {vendorMock.name}
                         </Heading>
@@ -46,9 +46,7 @@ const StoreHeader = () => {
                         </Text>
                     </div>
                 </div>
-                <p className="text-base/2 dark:text-white">
-                    {vendorMock.description}
-                </p>
+                {/* <p className="text-base/2 dark:text-white">{vendorMock.description}</p> */}
                 {/* <div className="flex w-full justify-center">
                     <div className="absolute flex w-full">
                         <div className="absolute top-0 left-0 left-[50%] flex w-[calc(100vw-60px)] translate-x-[-50%] gap-2 text-center">
@@ -65,6 +63,16 @@ const StoreHeader = () => {
     )
 }
 
+const Tab = () => {
+    return (
+        <div className="flex w-full justify-center gap-12 border-b border-zinc-800 py-4 uppercase">
+            <Text className="text-sm font-medium dark:!text-white">Home</Text>
+            <Text className="text-sm font-medium dark:!text-white">Products</Text>
+            <Text className="text-sm font-medium dark:!text-white">Reviews</Text>
+        </div>
+    )
+}
+
 const Layout = async ({ children }: { children: React.ReactNode }) => {
     const session = await auth()
     if (!session) redirect('/')
@@ -72,7 +80,10 @@ const Layout = async ({ children }: { children: React.ReactNode }) => {
     return (
         <div className="grow">
             <StoreHeader />
-            <div className="sx:p-6 mx-auto max-w-7xl py-6">{children}</div>
+            <div className="mx-auto space-y-6 py-6">
+                <Tab />
+                <div className="py-6">{children}</div>
+            </div>
         </div>
     )
 }

@@ -1,8 +1,7 @@
-import { faker } from '@faker-js/faker'
 import { User } from 'modules/domain/user-manager/entities/user'
 
 export const userMock: User = {
-    id: faker.string.uuid(),
+    id: 'random-id',
     name: 'John Doe',
     email: 'john.doe@example.com',
     emailVerified: new Date(),
