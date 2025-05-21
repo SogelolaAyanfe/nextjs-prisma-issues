@@ -4,7 +4,9 @@ import { Heading } from 'components/heading'
 import { Text } from 'components/text'
 import { vendorMock } from 'modules/domain/vendor-manager/entities/vendor.mock'
 import Image from 'next/image'
+import Link from 'next/link'
 import { redirect } from 'next/navigation'
+import { routes } from 'routes'
 
 const StoreHeader = () => {
     return (
@@ -47,17 +49,17 @@ const StoreHeader = () => {
                     </div>
                 </div>
                 {/* <p className="text-base/2 dark:text-white">{vendorMock.description}</p> */}
-                {/* <div className="flex w-full justify-center">
+                <div className="flex w-full justify-center pb-8">
                     <div className="absolute flex w-full">
-                        <div className="absolute top-0 left-0 left-[50%] flex w-[calc(100vw-60px)] translate-x-[-50%] gap-2 text-center">
+                        <div className="absolute top-0 left-0 left-[50%] flex w-[calc(100vw-0px)] translate-x-[-50%] gap-2 text-center">
                             <div className="relative w-full bg-purple-500 p-6">
                                 <p className="text-base/2 text-purple-500 dark:text-white">
-                                    {vendorMock.description}
+                                    Discounts up to 50% off
                                 </p>
                             </div>
                         </div>
                     </div>
-                </div> */}
+                </div>
             </div>
         </div>
     )
@@ -67,7 +69,9 @@ const Tab = () => {
     return (
         <div className="flex w-full justify-center gap-12 border-b border-zinc-800 py-4 uppercase">
             <Text className="text-sm font-medium dark:!text-white">Home</Text>
-            <Text className="text-sm font-medium dark:!text-white">Products</Text>
+            <Link href={routes.store.products({ vendorId: vendorMock.id })}>
+                <Text className="text-sm font-medium dark:!text-white">Products</Text>
+            </Link>
             <Text className="text-sm font-medium dark:!text-white">Reviews</Text>
         </div>
     )
