@@ -9,7 +9,7 @@ import { Radio, RadioField, RadioGroup } from 'components/radio'
 import { Text } from 'components/text'
 import { productMock } from 'modules/domain/product-manager/entities'
 import { useParams, useRouter } from 'next/navigation'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { routes } from 'routes'
 const products = Array.from({ length: 12 }, () => ({
     ...productMock,
@@ -21,43 +21,36 @@ type Params = {
     sort: 'newest' | 'price-asc' | 'price-desc'
 }
 
+const DEFAULT_SORT = 'newest'
+
 const SortFilter = () => {
     const { id, ...params } = useParams<Params>()
+    const [sort, setSort] = useState<Params['sort']>(params.sort ?? DEFAULT_SORT)
     const router = useRouter()
 
     useEffect(() => {
-        if (!params.sort) {
-            router.push(
-                routes.store.products({
-                    ...params,
-                    vendorId: id,
-                    params: { sort: 'newest' },
-                }),
-            )
-        }
-    }, [params.sort, id, router])
+        router.push(
+            routes.store.products({
+                ...params,
+                vendorId: id,
+                params: { sort },
+            }),
+        )
+    }, [sort, id, router])
 
     return (
         <Disclosure>
             <DisclosureButton className="group flex cursor-pointer items-center justify-between">
-                <Text className="!text-md text-black font-medium uppercase dark:!text-white">
+                <Text className="!text-md font-medium text-black uppercase dark:!text-white">
                     Sort by
                 </Text>
                 <ChevronDownIcon className="size-5 fill-white/60 group-data-hover:fill-white/50 group-data-open:rotate-180" />
             </DisclosureButton>
             <DisclosurePanel className="py-2">
                 <RadioGroup
-                    value={params.sort}
+                    value={sort}
                     onChange={value => {
-                        router.push(
-                            routes.store.products({
-                                ...params,
-                                vendorId: id,
-                                params: {
-                                    sort: value as 'newest' | 'price-asc' | 'price-desc',
-                                },
-                            }),
-                        )
+                        setSort(value as 'newest' | 'price-asc' | 'price-desc')
                     }}
                 >
                     <RadioField>
