@@ -15,11 +15,12 @@ export const VendorSchema = z.object({
     email: z.string().email(),
     description: z.string().nullable(),
     logo: z.string().nullable(),
-    banner: z.string().nullable(),
+    banner: z.string(),
     status: VendorStatusSchema,
     address: z.string().nullable(),
     createdAt: z.date(),
     updatedAt: z.date(),
+    category: z.string().nullable(),
 })
 
 export type Vendor = z.infer<typeof VendorSchema>
