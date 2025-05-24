@@ -3,6 +3,7 @@
 import { HeartIcon } from '@heroicons/react/20/solid'
 import { AvailabilityBadge } from 'components/availability-badge'
 import { Avatar } from 'components/avatar'
+import { format } from 'lib/money'
 import { Product } from 'modules/domain/product-manager/entities/product'
 import { vendorMock } from 'modules/domain/vendor-manager/entities/vendor.mock'
 import Image from 'next/image'
@@ -76,12 +77,12 @@ export const ProductMiniCard = ({ product }: ProductMiniCardProps) => {
                             {product.discountedPrice ? (
                                 <>
                                     <span className="mr-2 text-zinc-500 line-through">
-                                        ${product.price}
+                                        {format(product.price)}
                                     </span>
-                                    ${product.discountedPrice}
+                                    {format(product.discountedPrice)}
                                 </>
                             ) : (
-                                `$${product.price}`
+                                format(product.price)
                             )}
                         </p>
 

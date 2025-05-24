@@ -8,12 +8,14 @@ import { Fieldset, Label } from 'components/fieldset'
 import { Heading } from 'components/heading'
 import { Select } from 'components/select'
 import { StarRating } from 'components/star-rating'
-import { Text } from 'components/text'
+import { Text, TextLink } from 'components/text'
+import { format } from 'lib/money'
 import { Product, ProductAvailabilityStatus } from 'modules/domain/product-manager'
 import { productMock } from 'modules/domain/product-manager/entities/product.mock'
 import { vendorMock } from 'modules/domain/vendor-manager/entities/vendor.mock'
 import Image from 'next/image'
 import { useState } from 'react'
+import { routes } from 'routes'
 
 export const ProductDetailItem = ({
     label,
@@ -133,11 +135,14 @@ export const ProductPage = ({ params }: { params: { id: string } }) => {
                         <AvailabilityBadge product={product} />
                     </div>
                     <Text className="!text-xl text-zinc-700 dark:text-zinc-200">
-                        ${product.price}
+                        {format(product.price)}
                     </Text>
-                    <Text className="!text-md text-zinc-500 dark:text-zinc-300">
+                    <TextLink
+                        className="!text-md text-zinc-500 dark:text-zinc-300"
+                        href={routes.store.home({ id: vendorMock.id })}
+                    >
                         By {vendorMock.name}
-                    </Text>
+                    </TextLink>
                     <ProductDetailItem label="SKU" value={product.sku} />
 
                     <Fieldset>
