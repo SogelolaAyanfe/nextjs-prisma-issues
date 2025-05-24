@@ -63,7 +63,7 @@ const StoreHeader = () => {
                         <div className="relative mt-[-28px] flex transform gap-5">
                             <Avatar
                                 src={vendorMock.logo}
-                                className="size-15 border-1 border-zinc-100 xl:size-32 dark:border-white"
+                                className="size-15 border-1 !border-zinc-100 xl:size-32 dark:border-white"
                             />
                         </div>
                         <div className="flex flex-col pt-1">
@@ -71,11 +71,16 @@ const StoreHeader = () => {
                                 <Heading className="text-xxl font-bold">
                                     {vendorMock.name}
                                 </Heading>
-                                <CheckBadgeIcon className="size-6 fill-orange-400" />
+                                <div className="flex items-center gap-1 ">
+                                    <CheckBadgeIcon className="size-6 fill-orange-400" />
+                                    <Text className="!text-xs !text-orange-400">
+                                        Verified store
+                                    </Text>
+                                </div>
                                 <FollowButton isFollowing={true} />
                             </div>
                             <Text className="text-xs dark:!text-white">
-                                @username ·{' '}
+                                {/* @username ·{' '} */}
                                 <span className="text-zinc-500 dark:text-zinc-400">
                                     {vendorMock.category}
                                 </span>
