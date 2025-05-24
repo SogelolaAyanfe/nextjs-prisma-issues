@@ -1,6 +1,7 @@
 import { CheckBadgeIcon } from '@heroicons/react/20/solid'
 import { auth } from 'auth'
 import { Avatar } from 'components/avatar'
+import { FollowButton } from 'components/follow-button'
 import { Heading } from 'components/heading'
 import { Link } from 'components/link'
 import { Text } from 'components/text'
@@ -70,7 +71,8 @@ const StoreHeader = () => {
                                 <Heading className="text-xxl font-bold">
                                     {vendorMock.name}
                                 </Heading>
-                                <CheckBadgeIcon className="size-6 fill-blue-500" />
+                                <CheckBadgeIcon className="size-6 fill-orange-400" />
+                                <FollowButton isFollowing={true} />
                             </div>
                             <Text className="text-xs dark:!text-white">
                                 @username ·{' '}
