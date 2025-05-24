@@ -189,8 +189,6 @@ export const Button = forwardRef(function Button(
             'px-[calc(--spacing(4)-1px)] py-[calc(--spacing(3)-1px)] sm:px-[calc(--spacing(4)-1px)] sm:py-[calc(--spacing(3)-1px)] sm:text-base/7',
     )
 
-    console.log(classes)
-
     return 'href' in props ? (
         <Link
             {...props}

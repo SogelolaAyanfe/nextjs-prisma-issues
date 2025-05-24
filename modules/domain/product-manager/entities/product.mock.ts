@@ -1,4 +1,4 @@
-import { Product } from 'modules/domain/product-manager/entities/product'
+import { Product, ProductAvailabilityStatus } from 'modules/domain/product-manager/entities/product'
 
 export const productMock: Product = {
     id: 'random-id',
@@ -14,7 +14,7 @@ export const productMock: Product = {
     attributes: {},
     stock: 100,
     sku: '1234567890',
-    availabilityStatus: 'IN_STOCK',
+    availabilityStatus: ProductAvailabilityStatus.LIMITED_AVAILABILITY,
     status: 'DRAFT',
     createdAt: new Date(),
     updatedAt: new Date(),

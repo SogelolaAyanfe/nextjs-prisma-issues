@@ -1,6 +1,5 @@
 'use client'
 
-import { faker } from '@faker-js/faker'
 import { ChevronDownIcon } from '@heroicons/react/20/solid'
 import { ProductMiniCard } from 'blocks/product/product-mini-card'
 import { Disclosure, DisclosureButton, DisclosurePanel } from 'components/disclosure'
@@ -11,10 +10,13 @@ import { productMock } from 'modules/domain/product-manager/entities'
 import { useParams, useRouter } from 'next/navigation'
 import { useEffect, useState } from 'react'
 import { routes } from 'routes'
-const products = Array.from({ length: 12 }, () => ({
-    ...productMock,
-    id: faker.string.uuid(),
-}))
+
+const products = [
+    { ...productMock, id: '1' },
+    { ...productMock, id: '2' },
+    { ...productMock, id: '3' },
+    { ...productMock, id: '4' },
+]
 
 type Params = {
     id: string

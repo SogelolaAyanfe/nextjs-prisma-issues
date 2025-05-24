@@ -14,4 +14,5 @@ export const routes = {
             }
         }) => addQueryParams(`/store/${vendorId}/products`, params),
     },
+    product: ({ id }: { id: string }) => `/products/${id}`,
 }

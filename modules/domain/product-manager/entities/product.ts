@@ -1,9 +1,15 @@
 import { z } from 'zod'
 
+export const ProductAvailabilityStatus = {
+    IN_STOCK: 'IN_STOCK',
+    LOW_STOCK: 'LOW_STOCK',
+    LIMITED_AVAILABILITY: 'LIMITED_AVAILABILITY',
+} as const
+
 export const ProductAvailabilityStatusEnum = z.enum([
-    'IN_STOCK',
-    'LOW_STOCK',
-    'LIMITED_AVAILABILITY',
+    ProductAvailabilityStatus.IN_STOCK,
+    ProductAvailabilityStatus.LOW_STOCK,
+    ProductAvailabilityStatus.LIMITED_AVAILABILITY,
 ])
 
 export type ProductAvailabilityStatus = z.infer<typeof ProductAvailabilityStatusEnum>

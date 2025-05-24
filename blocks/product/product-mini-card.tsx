@@ -1,43 +1,19 @@
 'use client'
 
 import { HeartIcon } from '@heroicons/react/20/solid'
-import clsx from 'clsx'
+import { AvailabilityBadge } from 'components/availability-badge'
 import { Avatar } from 'components/avatar'
-import {
-    Product,
-    ProductAvailabilityStatus,
-} from 'modules/domain/product-manager/entities/product'
+import { Product } from 'modules/domain/product-manager/entities/product'
 import { vendorMock } from 'modules/domain/vendor-manager/entities/vendor.mock'
 import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { routes } from 'routes'
 
-const availabilityConfig: Record<
-    ProductAvailabilityStatus,
-    { label: string; className: string }
-> = {
-    IN_STOCK: {
-        label: 'In Stock',
-        className:
-            'bg-green-50 text-green-700 ring-green-600/20 dark:bg-green-500/10 dark:text-green-400 dark:ring-green-500/20',
-    },
-    LOW_STOCK: {
-        label: 'Low Stock',
-        className:
-            'bg-yellow-50 text-yellow-700 ring-yellow-600/20 dark:bg-yellow-500/10 dark:text-yellow-400 dark:ring-yellow-500/20',
-    },
-    LIMITED_AVAILABILITY: {
-        label: 'Limited Availability',
-        className:
-            'bg-red-50 text-red-700 ring-red-600/20 dark:bg-red-500/10 dark:text-red-400 dark:ring-red-500/20',
-    },
-}
-
 type ProductMiniCardProps = {
     product: Pick<
         Product,
-        'name' | 'images' | 'price' | 'discountedPrice' | 'availabilityStatus'
+        'name' | 'images' | 'price' | 'discountedPrice' | 'availabilityStatus' | 'id'
     >
 }
 const useIsStorePage = () => {
@@ -50,7 +26,6 @@ const useIsStorePage = () => {
 }
 
 export const ProductMiniCard = ({ product }: ProductMiniCardProps) => {
-    const availability = availabilityConfig[product.availabilityStatus]
     const isStorePage = useIsStorePage()
 
     return (
@@ -73,7 +48,7 @@ export const ProductMiniCard = ({ product }: ProductMiniCardProps) => {
                 </Link>
             )}
             <Link
-                href="#"
+                href={routes.product({ id: product.id })}
                 className="group relative flex cursor-pointer flex-col overflow-hidden"
             >
                 {/* Image container */}
@@ -110,17 +85,7 @@ export const ProductMiniCard = ({ product }: ProductMiniCardProps) => {
                             )}
                         </p>
 
-                        {/* Availability badge */}
-                        <div className="mt-2">
-                            <span
-                                className={clsx(
-                                    'inline-flex items-center rounded-md px-2 py-1 text-xs font-medium ring-1 ring-inset',
-                                    availability.className,
-                                )}
-                            >
-                                {availability.label}
-                            </span>
-                        </div>
+                        <AvailabilityBadge product={product} />
                     </div>
                 </div>
             </Link>
