@@ -15,12 +15,12 @@ const VendorSocialLinks = () => {
     return (
         <div className="flex gap-5">
             {vendorMock.socialLinks.facebook && (
-                <Link href={vendorMock.socialLinks.facebook}>
+                <Link href={vendorMock.socialLinks.facebook} target="_blank">
                     <FaFacebook size={25} />
                 </Link>
             )}
             {vendorMock.socialLinks.instagram && (
-                <Link href={vendorMock.socialLinks.instagram}>
+                <Link href={vendorMock.socialLinks.instagram} target="_blank">
                     <FaInstagram size={25} />
                 </Link>
             )}
@@ -33,7 +33,7 @@ const VendorSocialLinks = () => {
                 </Link>
             )} */}
             {vendorMock.socialLinks.whatsapp && (
-                <Link href={vendorMock.socialLinks.whatsapp}>
+                <Link href={vendorMock.socialLinks.whatsapp} target="_blank">
                     <FaWhatsapp size={25} />
                 </Link>
             )}
@@ -44,9 +44,9 @@ const StoreHeader = () => {
     return (
         <div className="w-full">
             {/* Image container */}
-            <div className="flex w-full items-center justify-center pb-[260px]">
+            <div className="flex w-full items-center justify-center pb-[80px]">
                 <div className="absolute top-0 flex w-full items-center justify-center">
-                    <div className="relative h-[350px] w-full max-w-[1350px] overflow-hidden rounded-b-2xl">
+                    <div className="relative h-[170px] w-full max-w-[1350px] overflow-hidden rounded-b-2xl">
                         <Image
                             src={vendorMock.banner}
                             alt={vendorMock.name}
@@ -71,9 +71,9 @@ const StoreHeader = () => {
                                 <Heading className="text-xxl font-bold">
                                     {vendorMock.name}
                                 </Heading>
-                                <div className="flex items-center gap-1 ">
-                                    <CheckBadgeIcon className="size-6 fill-orange-400" />
-                                    <Text className="!text-xs !text-orange-400">
+                                <div className="flex items-center gap-1">
+                                    <CheckBadgeIcon className="size-6 fill-blue-400" />
+                                    <Text className="!text-xs !text-blue-400">
                                         Verified store
                                     </Text>
                                 </div>
