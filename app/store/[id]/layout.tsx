@@ -1,3 +1,4 @@
+import { CheckBadgeIcon } from '@heroicons/react/20/solid'
 import { auth } from 'auth'
 import { Avatar } from 'components/avatar'
 import { Heading } from 'components/heading'
@@ -34,9 +35,12 @@ const StoreHeader = () => {
                         />
                     </div>
                     <div className="flex flex-col pt-1">
-                        <Heading className="text-xxl font-bold">
-                            {vendorMock.name}
-                        </Heading>
+                        <div className="flex items-center gap-2">
+                            <Heading className="text-xxl font-bold">
+                                {vendorMock.name}
+                            </Heading>
+                            <CheckBadgeIcon className="size-6 fill-blue-500" />
+                        </div>
                         <Text className="text-xs dark:!text-white">
                             @username ·{' '}
                             <span className="text-zinc-500 dark:text-zinc-400">
