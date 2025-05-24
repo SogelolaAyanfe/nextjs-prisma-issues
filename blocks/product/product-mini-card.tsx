@@ -1,5 +1,6 @@
 'use client'
 
+import { HeartIcon } from '@heroicons/react/20/solid'
 import clsx from 'clsx'
 import { Avatar } from 'components/avatar'
 import {
@@ -83,6 +84,9 @@ export const ProductMiniCard = ({ product }: ProductMiniCardProps) => {
                         fill
                         className="object-cover object-center transition group-hover:opacity-75"
                     />
+                    <div className="align-center absolute top-2 right-2 flex justify-center rounded-full bg-white p-[7px] opacity-0 shadow-md transition group-hover:opacity-100">
+                        <HeartIcon color="grey" data-slot="icon" className="size-5" />
+                    </div>
                 </div>
 
                 {/* Content */}
