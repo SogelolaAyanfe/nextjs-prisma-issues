@@ -1,7 +1,7 @@
 import { auth } from 'auth'
 import { FeaturedProducts } from 'blocks/product/featured-products'
 import { NewArrivals } from 'blocks/product/new-arrivals'
-import { Badge } from 'components/badge'
+import { VendorRefundPolicy } from 'blocks/store/vendor-refund-policy'
 import { Button } from 'components/button'
 import { Card } from 'components/card'
 import { StarRating } from 'components/star-rating'
@@ -26,15 +26,6 @@ const StatsItem = ({
             ) : (
                 value
             )}
-        </div>
-    )
-}
-
-const VendorRefundPolicy = () => {
-    return (
-        <div className="flex items-center gap-2">
-            <Badge color="red">No refund</Badge>
-            <Badge color="orange">Exchange only</Badge>
         </div>
     )
 }
@@ -86,14 +77,14 @@ const Home = async () => {
 
     return (
         <div className="flex flex-col gap-12">
-            {/* <div className="flex gap-6">
+            <div className="flex gap-6">
                 <div className="flex flex-1">
                     <StoreStats />
                 </div>
                 <div className="flex flex-1/3">
                     <FeaturedProducts />
                 </div>
-            </div> */}
+            </div>
             <FeaturedProducts />
             <NewArrivals />
         </div>

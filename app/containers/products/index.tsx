@@ -2,6 +2,7 @@
 
 import { HeartIcon } from '@heroicons/react/20/solid'
 import { FeaturedProducts } from 'blocks/product/featured-products'
+import { VendorRefundPolicy } from 'blocks/store/vendor-refund-policy'
 import { AvailabilityBadge } from 'components/availability-badge'
 import { Button } from 'components/button'
 import { Fieldset, Label } from 'components/fieldset'
@@ -65,7 +66,7 @@ const SaveForLaterButton = () => {
             className="align-center flex justify-center !rounded-full border-none p-3 transition outline-none after:shadow-none"
             color="white"
         >
-            <HeartIcon color="grey" data-slot="icon" className="!size-8" />
+            <HeartIcon color="grey" data-slot="icon" className="!size-7" />
         </Button>
     )
 }
@@ -160,6 +161,7 @@ export const ProductPage = ({ params }: { params: { id: string } }) => {
                         quantity={quantity}
                         setQuantity={setQuantity}
                     />
+                    <VendorRefundPolicy />
                     <AddToCartButtonWithSaveForLater
                         product={product}
                         onClick={() => {}}

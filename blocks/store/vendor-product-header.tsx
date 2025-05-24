@@ -5,7 +5,7 @@ import { userMock } from 'modules/domain/user-manager/entities/user.mock'
 import Link from 'next/link'
 import { routes } from 'routes'
 
-export const StoreProductHeader = () => {
+export const VendorProductHeader = () => {
     return (
         <Link
             className="flex cursor-pointer space-x-2"
