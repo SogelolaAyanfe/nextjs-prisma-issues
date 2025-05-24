@@ -14,4 +14,10 @@ export const vendorMock: Vendor = {
     banner: 'https://images.pexels.com/photos/12725055/pexels-photo-12725055.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
     address: 'Ibadan, Nigeria',
     category: 'Apparel & Clothing',
+    socialLinks: {
+        facebook: 'https://www.facebook.com/nike',
+        instagram: 'https://www.instagram.com/nike',
+        website: 'https://www.nike.com',
+        whatsapp: 'https://wa.me/1234567890',
+    },
 }

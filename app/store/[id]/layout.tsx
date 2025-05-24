@@ -2,13 +2,43 @@ import { CheckBadgeIcon } from '@heroicons/react/20/solid'
 import { auth } from 'auth'
 import { Avatar } from 'components/avatar'
 import { Heading } from 'components/heading'
+import { Link } from 'components/link'
 import { Text } from 'components/text'
 import { vendorMock } from 'modules/domain/vendor-manager/entities/vendor.mock'
 import Image from 'next/image'
-import Link from 'next/link'
 import { redirect } from 'next/navigation'
+import { FaFacebook, FaInstagram, FaWhatsapp } from 'react-icons/fa'
 import { routes } from 'routes'
 
+const VendorSocialLinks = () => {
+    return (
+        <div className="flex gap-5">
+            {vendorMock.socialLinks.facebook && (
+                <Link href={vendorMock.socialLinks.facebook}>
+                    <FaFacebook size={25} />
+                </Link>
+            )}
+            {vendorMock.socialLinks.instagram && (
+                <Link href={vendorMock.socialLinks.instagram}>
+                    <FaInstagram size={25} />
+                </Link>
+            )}
+            {/* {vendorMock.socialLinks.website && (
+                <Link href={vendorMock.socialLinks.website} className="align-center flex">
+                    <LinkIcon className="size-5" />
+                    <Text className="text-sm">
+                        {truncate(vendorMock.socialLinks.website, 20)}
+                    </Text>
+                </Link>
+            )} */}
+            {vendorMock.socialLinks.whatsapp && (
+                <Link href={vendorMock.socialLinks.whatsapp}>
+                    <FaWhatsapp size={25} />
+                </Link>
+            )}
+        </div>
+    )
+}
 const StoreHeader = () => {
     return (
         <div className="w-full">
@@ -27,31 +57,37 @@ const StoreHeader = () => {
             </div>
 
             <div className="flex flex-col space-y-6">
-                <div className="flex gap-5">
-                    <div className="relative mt-[-28px] flex transform gap-5">
-                        <Avatar
-                            src={vendorMock.logo}
-                            className="size-15 border-1 border-zinc-100 xl:size-32 dark:border-white"
-                        />
-                    </div>
-                    <div className="flex flex-col pt-1">
-                        <div className="flex items-center gap-2">
-                            <Heading className="text-xxl font-bold">
-                                {vendorMock.name}
-                            </Heading>
-                            <CheckBadgeIcon className="size-6 fill-blue-500" />
+                <div className="flex justify-between">
+                    <div className="flex gap-5">
+                        <div className="relative mt-[-28px] flex transform gap-5">
+                            <Avatar
+                                src={vendorMock.logo}
+                                className="size-15 border-1 border-zinc-100 xl:size-32 dark:border-white"
+                            />
                         </div>
-                        <Text className="text-xs dark:!text-white">
-                            @username ·{' '}
-                            <span className="text-zinc-500 dark:text-zinc-400">
-                                {vendorMock.category}
-                            </span>
-                        </Text>
-                        <Text className="text-xs text-zinc-500 dark:text-zinc-400">
-                            {vendorMock.address}
-                        </Text>
+                        <div className="flex flex-col pt-1">
+                            <div className="flex items-center gap-2">
+                                <Heading className="text-xxl font-bold">
+                                    {vendorMock.name}
+                                </Heading>
+                                <CheckBadgeIcon className="size-6 fill-blue-500" />
+                            </div>
+                            <Text className="text-xs dark:!text-white">
+                                @username ·{' '}
+                                <span className="text-zinc-500 dark:text-zinc-400">
+                                    {vendorMock.category}
+                                </span>
+                            </Text>
+                            <Text className="text-xs text-zinc-500 dark:text-zinc-400">
+                                {vendorMock.address}
+                            </Text>
+                        </div>
+                    </div>
+                    <div className="pt-1">
+                        <VendorSocialLinks />
                     </div>
                 </div>
+
                 {/* <p className="text-base/2 dark:text-white">{vendorMock.description}</p> */}
                 <div className="flex w-full justify-center">
                     <div className="flex w-[850px] gap-2 text-center">

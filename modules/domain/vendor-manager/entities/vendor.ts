@@ -21,6 +21,12 @@ export const VendorSchema = z.object({
     createdAt: z.date(),
     updatedAt: z.date(),
     category: z.string().nullable(),
+    socialLinks: z.object({
+        facebook: z.string().url().nullable(),
+        instagram: z.string().url().nullable(),
+        website: z.string().url().nullable(),
+        whatsapp: z.string().url().nullable(),
+    }),
 })
 
 export type Vendor = z.infer<typeof VendorSchema>
