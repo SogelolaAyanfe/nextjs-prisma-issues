@@ -2,6 +2,8 @@
 
 import { HeartIcon } from '@heroicons/react/20/solid'
 import { GroupedProducts } from 'blocks/product/grouped-products'
+import { Reviews } from 'blocks/review/reviews'
+import { VendorCard } from 'blocks/store/vendor-card'
 import { VendorRefundPolicy } from 'blocks/store/vendor-refund-policy'
 import { AvailabilityBadge } from 'components/availability-badge'
 import { Button } from 'components/button'
@@ -17,7 +19,6 @@ import { vendorMock } from 'modules/domain/vendor-manager/entities/vendor.mock'
 import Image from 'next/image'
 import { useState } from 'react'
 import { routes } from 'routes'
-import { ReviewsSection } from './ReviewsSection'
 
 export const ProductDetailItem = ({
     label,
@@ -187,9 +188,9 @@ export const ProductPage = ({ params }: { params: { id: string } }) => {
                     />
                 </div>
             </div>
-            <ReviewsSection />
+            <Reviews />
+            <VendorCard showLogo={true} />
             <YouMightAlsoLike />
-            <MoreFromVendor />
         </div>
     )
 }

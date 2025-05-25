@@ -1,22 +1,32 @@
 import { ProductMiniCard } from 'blocks/product/product-mini-card'
+import clsx from 'clsx'
 import { Product } from 'modules/domain/product-manager/entities'
 
 export const GroupedProducts = ({
     title,
     products,
+    className,
 }: {
-    title: string
+    title?: string
     products: Pick<
         Product,
         'name' | 'images' | 'price' | 'discountedPrice' | 'availabilityStatus' | 'id'
     >[]
+    className?: string
 }) => {
     return (
         <div className="w-full">
-            <h2 className="mb-12 text-2xl font-bold tracking-tight text-zinc-900 dark:text-white">
-                {title}
-            </h2>
-            <div className="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4">
+            {title && (
+                <h2 className="mb-12 text-2xl font-bold tracking-tight text-zinc-900 dark:text-white">
+                    {title}
+                </h2>
+            )}
+            <div
+                className={clsx(
+                    'grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4',
+                    className,
+                )}
+            >
                 {products.map(product => (
                     <ProductMiniCard key={product.id} product={product} />
                 ))}

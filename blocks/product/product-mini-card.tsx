@@ -16,6 +16,7 @@ type ProductMiniCardProps = {
         Product,
         'name' | 'images' | 'price' | 'discountedPrice' | 'availabilityStatus' | 'id'
     >
+    showVendor?: boolean
 }
 const useIsStorePage = () => {
     const pathname = usePathname()
@@ -26,12 +27,12 @@ const useIsStorePage = () => {
     return isStorePage
 }
 
-export const ProductMiniCard = ({ product }: ProductMiniCardProps) => {
+export const ProductMiniCard = ({ product ,showVendor = true}: ProductMiniCardProps) => {
     const isStorePage = useIsStorePage()
 
     return (
-        <div className="relative space-y-3">
-            {!isStorePage && (
+        <div className="relative space-y-3 w-full">
+            {!isStorePage && showVendor && (
                 <Link
                     className="flex cursor-pointer items-center space-x-2"
                     href={routes.store.home({ id: vendorMock.id })}

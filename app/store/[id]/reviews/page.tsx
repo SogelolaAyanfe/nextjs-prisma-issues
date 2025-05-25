@@ -1,6 +1,5 @@
 import { auth } from 'auth'
-import { NewArrivals } from 'blocks/product/new-arrivals'
-import { VendorCard } from 'blocks/store/vendor-card'
+import { Reviews } from 'blocks/review/reviews'
 import { redirect } from 'next/navigation'
 
 const Page = async () => {
@@ -9,8 +8,7 @@ const Page = async () => {
 
     return (
         <div className="flex flex-col gap-12">
-            <VendorCard />
-            <NewArrivals />
+            <Reviews showTitle={false} />
         </div>
     )
 }

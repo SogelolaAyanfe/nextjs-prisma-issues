@@ -13,6 +13,7 @@ export const routes = {
                 sort: 'newest' | 'price-asc' | 'price-desc'
             }
         }) => addQueryParams(`/store/${vendorId}/products`, params),
+        reviews: ({ vendorId }: { vendorId: string }) => `/store/${vendorId}/reviews`,
     },
     product: ({ id }: { id: string }) => `/products/${id}`,
 }

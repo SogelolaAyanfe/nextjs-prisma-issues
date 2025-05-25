@@ -114,7 +114,9 @@ const Tab = () => {
             <Link href={routes.store.products({ vendorId: vendorMock.id })}>
                 <Text className="text-sm font-medium dark:!text-white">Products</Text>
             </Link>
-            <Text className="text-sm font-medium dark:!text-white">Reviews</Text>
+            <Link href={routes.store.reviews({ vendorId: vendorMock.id })}>
+                <Text className="text-sm font-medium dark:!text-white">Reviews</Text>
+            </Link>
         </div>
     )
 }

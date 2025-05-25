@@ -1,3 +1,5 @@
+'use client'
+
 import { Avatar } from 'components/avatar'
 import { Heading } from 'components/heading'
 import { Pagination } from 'components/pagination'
@@ -68,12 +70,12 @@ const reviews = [
     },
 ]
 
-export function ReviewsSection() {
+export const Reviews = ({ showTitle = true }: { showTitle?: boolean }) => {
     const [page, setPage] = useState(1)
 
     return (
         <div className="flex flex-col gap-8">
-            <Heading className="mb-2">Reviews</Heading>
+            {showTitle && <Heading className="mb-2">Reviews</Heading>}
             {reviews.map(review => (
                 <div
                     key={review.id}
@@ -114,5 +116,3 @@ export function ReviewsSection() {
         </div>
     )
 }
-
-export default ReviewsSection
