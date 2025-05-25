@@ -1,10 +1,10 @@
-import { CheckBadgeIcon } from '@heroicons/react/20/solid'
 import { auth } from 'auth'
 import { Avatar } from 'components/avatar'
 import { FollowButton } from 'components/follow-button'
 import { Heading } from 'components/heading'
 import { Link } from 'components/link'
 import { Text } from 'components/text'
+import { VerifiedBadge } from 'components/verified-badge'
 import { vendorMock } from 'modules/domain/vendor-manager/entities/vendor.mock'
 import Image from 'next/image'
 import { redirect } from 'next/navigation'
@@ -71,12 +71,7 @@ const StoreHeader = () => {
                                 <Heading className="text-xxl font-bold">
                                     {vendorMock.name}
                                 </Heading>
-                                <div className="flex items-center gap-1">
-                                    <CheckBadgeIcon className="size-6 fill-blue-400" />
-                                    <Text className="!text-xs !text-blue-400">
-                                        Verified store
-                                    </Text>
-                                </div>
+                                <VerifiedBadge />
                                 <FollowButton isFollowing={true} />
                             </div>
                             <Text className="text-xs dark:!text-white">

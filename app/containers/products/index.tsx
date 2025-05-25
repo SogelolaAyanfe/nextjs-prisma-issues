@@ -8,8 +8,8 @@ import { Button } from 'components/button'
 import { Fieldset, Label } from 'components/fieldset'
 import { Heading } from 'components/heading'
 import { Select } from 'components/select'
-import { StarRating } from 'components/star-rating'
 import { Text, TextLink } from 'components/text'
+import { VerifiedBadge } from 'components/verified-badge'
 import { format } from 'lib/money'
 import { Product, ProductAvailabilityStatus } from 'modules/domain/product-manager'
 import { productMock } from 'modules/domain/product-manager/entities/product.mock'
@@ -17,6 +17,7 @@ import { vendorMock } from 'modules/domain/vendor-manager/entities/vendor.mock'
 import Image from 'next/image'
 import { useState } from 'react'
 import { routes } from 'routes'
+import { ReviewsSection } from './ReviewsSection'
 
 export const ProductDetailItem = ({
     label,
@@ -138,12 +139,15 @@ export const ProductPage = ({ params }: { params: { id: string } }) => {
                     <Text className="!text-xl text-zinc-700 dark:text-zinc-200">
                         {format(product.price)}
                     </Text>
-                    <TextLink
-                        className="!text-md text-zinc-500 dark:text-zinc-300"
-                        href={routes.store.home({ id: vendorMock.id })}
-                    >
-                        By {vendorMock.name}
-                    </TextLink>
+                    <div className="flex items-center gap-2">
+                        <TextLink
+                            className="!text-md text-zinc-500 dark:text-zinc-300"
+                            href={routes.store.home({ id: vendorMock.id })}
+                        >
+                            By {vendorMock.name}
+                        </TextLink>
+                        <VerifiedBadge />
+                    </div>
                     <ProductDetailItem label="SKU" value={product.sku} />
 
                     <Fieldset>
@@ -169,10 +173,7 @@ export const ProductPage = ({ params }: { params: { id: string } }) => {
                 </div>
             </div>
             {/* Rating Section */}
-            <div className="flex flex-col gap-2">
-                <h2 className="text-2xl font-semibold">Rating</h2>
-                <StarRating rating={4.5} />
-            </div>
+            <ReviewsSection />
             {/* You might also like */}
             <div className="mt-8">
                 <h2 className="mb-4 text-2xl font-semibold">You might also like</h2>
