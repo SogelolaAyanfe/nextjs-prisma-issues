@@ -1,3 +1,4 @@
+import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/20/solid'
 import clsx from 'clsx'
 import { Button } from 'components/button'
 import type React from 'react'
@@ -34,20 +35,7 @@ export function PaginationPrevious({
                 aria-label="Previous page"
                 onClick={onClick}
             >
-                <svg
-                    className="stroke-current"
-                    data-slot="icon"
-                    viewBox="0 0 16 16"
-                    fill="none"
-                    aria-hidden="true"
-                >
-                    <path
-                        d="M2.75 8H13.25M2.75 8L5.25 5.5M2.75 8L5.25 10.5"
-                        strokeWidth={1.5}
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                    />
-                </svg>
+                <ChevronLeftIcon className="size-4" />
                 {children}
             </Button>
         </span>
@@ -73,20 +61,7 @@ export function PaginationNext({
                 onClick={onClick}
             >
                 {children}
-                <svg
-                    className="stroke-current"
-                    data-slot="icon"
-                    viewBox="0 0 16 16"
-                    fill="none"
-                    aria-hidden="true"
-                >
-                    <path
-                        d="M13.25 8L2.75 8M13.25 8L10.75 10.5M13.25 8L10.75 5.5"
-                        strokeWidth={1.5}
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                    />
-                </svg>
+                <ChevronRightIcon className="size-4" />
             </Button>
         </span>
     )
