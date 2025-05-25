@@ -5,6 +5,7 @@ import { StarRating } from 'components/star-rating'
 import { Text } from 'components/text'
 import { initials } from 'modules/domain/user-manager/entities/user'
 import { useState } from 'react'
+import { FaCheckCircle } from 'react-icons/fa'
 
 const reviews = [
     {
@@ -80,12 +81,12 @@ export function ReviewsSection() {
                 >
                     <div className="flex items-center gap-2">
                         <StarRating rating={review.rating} />
-                        {/* {review.recommends && (
+                        {review.recommends && (
                             <span className="flex items-center gap-1 text-sm font-medium text-green-600">
                                 <FaCheckCircle className="inline-block" size={16} />{' '}
                                 Recommends
                             </span>
-                        )} */}
+                        )}
                     </div>
                     <Text className="text-lg">{review.text}</Text>
                     <div className="mt-2 flex items-center gap-2">
