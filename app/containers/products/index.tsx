@@ -1,7 +1,7 @@
 'use client'
 
 import { HeartIcon } from '@heroicons/react/20/solid'
-import { FeaturedProducts } from 'blocks/product/featured-products'
+import { GroupedProducts } from 'blocks/product/grouped-products'
 import { VendorRefundPolicy } from 'blocks/store/vendor-refund-policy'
 import { AvailabilityBadge } from 'components/availability-badge'
 import { Button } from 'components/button'
@@ -72,6 +72,21 @@ const SaveForLaterButton = () => {
     )
 }
 
+const products = [
+    { ...productMock, id: '1' },
+    { ...productMock, id: '2' },
+    { ...productMock, id: '3' },
+    { ...productMock, id: '4' },
+]
+
+const MoreFromVendor = () => {
+    return <GroupedProducts title="More from vendor" products={products} />
+}
+
+const YouMightAlsoLike = () => {
+    return <GroupedProducts title="You might also like" products={products} />
+}
+
 const AddToCartButtonWithSaveForLater = ({
     product,
     onClick,
@@ -115,7 +130,7 @@ export const ProductPage = ({ params }: { params: { id: string } }) => {
     // In a real app, fetch product by params.id
     const product = productMock
     return (
-        <div className="flex flex-col gap-12">
+        <div className="flex flex-col gap-20">
             <div className="flex flex-col gap-50 md:flex-row">
                 {/* Left: Images */}
                 <div className="flex flex-1/6 flex-col items-center">
@@ -172,13 +187,9 @@ export const ProductPage = ({ params }: { params: { id: string } }) => {
                     />
                 </div>
             </div>
-            {/* Rating Section */}
             <ReviewsSection />
-            {/* You might also like */}
-            <div className="mt-8">
-                <h2 className="mb-4 text-2xl font-semibold">You might also like</h2>
-                <FeaturedProducts />
-            </div>
+            <YouMightAlsoLike />
+            <MoreFromVendor />
         </div>
     )
 }

@@ -47,3 +47,11 @@ export const UserWithRelationsSchema = UserSchema.extend({
 })
 
 export type UserWithRelations = z.infer<typeof UserWithRelationsSchema>
+
+export const initials = ({ name }: Pick<User, 'name'>) =>
+    name
+        ?.split(' ')
+        .slice(0, 2)
+        .map(n => n[0])
+        .join('')
+        .toUpperCase()

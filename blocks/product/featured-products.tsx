@@ -1,6 +1,5 @@
 'use client'
 
-import { faker } from '@faker-js/faker'
 import { GroupedProducts } from 'blocks/product/grouped-products'
 import { productMock } from 'modules/domain/product-manager/entities'
 

@@ -1,7 +1,10 @@
 import { Avatar } from 'components/avatar'
+import { Heading } from 'components/heading'
+import { Pagination } from 'components/pagination'
 import { StarRating } from 'components/star-rating'
 import { Text } from 'components/text'
-import { FaCheckCircle } from 'react-icons/fa'
+import { initials } from 'modules/domain/user-manager/entities/user'
+import { useState } from 'react'
 
 const reviews = [
     {
@@ -16,7 +19,7 @@ const reviews = [
     },
     {
         id: 2,
-        rating: 5,
+        rating: 2,
         recommends: true,
         text: "It's the perfect gift for book lovers and any one who needs a bookmark while reading.",
         name: 'Elijah',
@@ -36,20 +39,40 @@ const reviews = [
     },
     {
         id: 4,
-        rating: 5,
+        rating: 2,
         recommends: true,
-        text: 'Good product and nice packaging',
+        text: 'Bad product and terrible packaging.',
         name: 'Shams Jamal',
         date: 'May 13, 2025',
         avatar: null,
         initials: 'S',
     },
+    {
+        id: 5,
+        rating: 2,
+        recommends: true,
+        text: 'Bad product and terrible packaging.',
+        name: 'Shams Jamal',
+        date: 'May 13, 2025',
+        avatar: null,
+    },
+    {
+        id: 6,
+        rating: 2,
+        recommends: true,
+        text: 'Bad product and terrible packaging.',
+        name: 'Shams Jamal',
+        date: 'May 13, 2025',
+        avatar: null,
+    },
 ]
 
 export function ReviewsSection() {
+    const [page, setPage] = useState(1)
+
     return (
         <div className="flex flex-col gap-8">
-            <h2 className="mb-2 text-2xl font-semibold">Reviews</h2>
+            <Heading className="mb-2">Reviews</Heading>
             {reviews.map(review => (
                 <div
                     key={review.id}
@@ -57,19 +80,18 @@ export function ReviewsSection() {
                 >
                     <div className="flex items-center gap-2">
                         <StarRating rating={review.rating} />
-                        <span className="text-lg font-bold">{review.rating}</span>
-                        {review.recommends && (
+                        {/* {review.recommends && (
                             <span className="flex items-center gap-1 text-sm font-medium text-green-600">
                                 <FaCheckCircle className="inline-block" size={16} />{' '}
                                 Recommends
                             </span>
-                        )}
+                        )} */}
                     </div>
                     <Text className="text-lg">{review.text}</Text>
                     <div className="mt-2 flex items-center gap-2">
                         <Avatar
                             src={review.avatar}
-                            initials={review.initials}
+                            initials={initials(review)}
                             alt={review.name}
                             className="size-7"
                         />
@@ -80,6 +102,14 @@ export function ReviewsSection() {
                     </div>
                 </div>
             ))}
+            <div className="flex justify-center">
+                <Pagination
+                    page={page}
+                    pageSize={1}
+                    total={reviews.length}
+                    onChange={setPage}
+                />
+            </div>
         </div>
     )
 }
