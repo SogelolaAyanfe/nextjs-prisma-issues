@@ -75,7 +75,11 @@ export const Reviews = ({ showTitle = true }: { showTitle?: boolean }) => {
 
     return (
         <div className="flex flex-col gap-8">
-            {showTitle && <Heading className="mb-2">Reviews</Heading>}
+            {showTitle && (
+                <Heading className="mb-2 !text-2xl" level={2}>
+                    Reviews
+                </Heading>
+            )}
             {reviews.map(review => (
                 <div
                     key={review.id}

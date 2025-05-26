@@ -1,6 +1,7 @@
 import { ProductMiniCard } from 'blocks/product/product-mini-card'
 import clsx from 'clsx'
 import { Product } from 'modules/domain/product-manager/entities'
+import { Heading } from 'components/heading'
 
 export const GroupedProducts = ({
     title,
@@ -17,9 +18,9 @@ export const GroupedProducts = ({
     return (
         <div className="w-full">
             {title && (
-                <h2 className="mb-12 text-2xl font-bold tracking-tight text-zinc-900 dark:text-white">
+                <Heading className="mb-12 !text-2xl font-bold tracking-tight text-zinc-900 dark:text-white">
                     {title}
-                </h2>
+                </Heading>
             )}
             <div
                 className={clsx(
