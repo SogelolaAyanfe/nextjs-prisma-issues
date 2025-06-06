@@ -1,6 +1,7 @@
 'use client'
 
 import { ProductMiniCard } from 'blocks/product/product-mini-card'
+import { Pagination } from 'components/pagination'
 import { ProductAvailabilityStatus } from 'modules/domain/product-manager/entities/product'
 import { useSearchParams } from 'next/navigation'
 import { useEffect, useState } from 'react'
@@ -113,6 +114,54 @@ const mockResults: SearchResult[] = [
         availabilityStatus: ProductAvailabilityStatus.IN_STOCK,
         rating: 4.8,
     },
+    {
+        id: '9',
+        name: 'Gaming Mouse',
+        price: 80,
+        discountedPrice: 60,
+        description: 'Precision gaming mouse with RGB lighting',
+        images: [
+            'https://images.pexels.com/photos/7151694/pexels-photo-7151694.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+        ],
+        availabilityStatus: ProductAvailabilityStatus.LIMITED_AVAILABILITY,
+        rating: 4.7,
+    },
+    {
+        id: '10',
+        name: 'Smartphone',
+        price: 800,
+        discountedPrice: null,
+        description: 'Latest flagship smartphone with advanced camera',
+        images: [
+            'https://images.pexels.com/photos/16005007/pexels-photo-16005007/free-photo-of-apple-iphone-14-pro-max-mobile-phone.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+        ],
+        availabilityStatus: ProductAvailabilityStatus.IN_STOCK,
+        rating: 4.5,
+    },
+    {
+        id: '11',
+        name: 'Wireless Headphones',
+        price: 200,
+        discountedPrice: 150,
+        description: 'High-quality wireless headphones',
+        images: [
+            'https://images.pexels.com/photos/3587478/pexels-photo-3587478.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+        ],
+        availabilityStatus: ProductAvailabilityStatus.LOW_STOCK,
+        rating: 4.6,
+    },
+    {
+        id: '12',
+        name: 'Smart Watch',
+        price: 350,
+        discountedPrice: null,
+        description: 'Advanced fitness tracking and notifications',
+        images: [
+            'https://images.pexels.com/photos/5081914/pexels-photo-5081914.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+        ],
+        availabilityStatus: ProductAvailabilityStatus.IN_STOCK,
+        rating: 4.4,
+    },
 ]
 
 export const SearchContainer = () => {
@@ -196,6 +245,13 @@ export const SearchContainer = () => {
                     )}
                 </div>
             )}
+
+            <Pagination
+                total={results.length}
+                page={1}
+                onChange={() => {}}
+                pageSize={10}
+            />
         </div>
     )
 }

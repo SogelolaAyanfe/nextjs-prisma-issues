@@ -114,7 +114,7 @@ export function Search({ className }: SearchProps) {
     const [selectedLocation, setSelectedLocation] = useState(location ?? '')
     const [priceRange, setPriceRange] = useState<{ min: number; max: number }>({
         min: minPrice ? parseInt(minPrice) : 0,
-        max: maxPrice ? parseInt(maxPrice) : 1000,
+        max: maxPrice ? parseInt(maxPrice) : 4000,
     })
     const [isOpen, setIsOpen] = useState(false)
 
