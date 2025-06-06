@@ -14,7 +14,7 @@ export const AppNavbar = () => {
                     </NavbarItem>
                 </NavbarSection>
                 <div className="flex flex-3 justify-center">
-                    <Search placeholder="Search destinations" className="w-96" />
+                    <Search   className="w-96" />
                 </div>
                 <NavbarSection className="flex-1 justify-end space-x-2">
                     <NavbarItem href="/explore">

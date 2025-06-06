@@ -5,6 +5,7 @@ import clsx from 'clsx'
 import { Button } from 'components/button'
 import { Field, Fieldset, Label } from 'components/fieldset'
 import { Input, InputGroup } from 'components/input'
+import { NavbarItem } from 'components/navbar'
 import { Popover, PopoverPanel } from 'components/popover'
 import { Select } from 'components/select'
 import { Text } from 'components/text'
@@ -59,6 +60,44 @@ const SelectLocation = ({
                 ))}
             </Select>
         </Fieldset>
+    )
+}
+
+const Suggestions = ({
+    searchTerm,
+    onSelect,
+}: {
+    searchTerm?: string
+    onSelect: (suggestion: string) => void
+}) => {
+    const suggestions = [
+        'Shoes',
+        'Clothes',
+        'Electronics',
+        'Furniture',
+        'Books',
+        'Toys',
+        'Other',
+    ]
+
+    return (
+        <div className="flex w-full flex-col gap-4 lg:flex-1/3">
+            <Text className="text-sm font-medium text-zinc-950 dark:text-zinc-500">
+                Suggestions
+            </Text>
+
+            <div>
+                {suggestions.slice(0, 5).map(suggestion => (
+                    <NavbarItem
+                        className="w-full cursor-pointer"
+                        key={suggestion}
+                        onClick={() => onSelect(suggestion)}
+                    >
+                        {suggestion}
+                    </NavbarItem>
+                ))}
+            </div>
+        </div>
     )
 }
 
@@ -138,72 +177,83 @@ export function Search({ className }: SearchProps) {
 
                 <PopoverPanel
                     static={isOpen}
-                    className="absolute top-full left-[50%] mt-2 w-[600px] max-w-[90vw] translate-x-[-50%] rounded-lg bg-white p-6 shadow-lg dark:bg-zinc-900"
+                    className="absolute top-full left-[50%] mt-2 !w-[100vw] translate-x-[-50%] rounded-lg bg-white p-6 shadow-lg lg:!w-[800px] lg:max-w-[90vw] dark:bg-zinc-900"
                     onBlur={handleBlur}
                 >
-                    {/* Filters Section */}
-                    <div className="mb-4">
-                        <div className="flex items-center justify-between">
-                            <Text className="text-sm font-medium text-zinc-950 dark:text-white">
-                                Filters
-                            </Text>
-                            {(selectedLocation ||
-                                priceRange.min > 0 ||
-                                priceRange.max < 1000) && (
-                                <button
-                                    onClick={clearFilters}
-                                    className="flex items-center text-sm text-blue-600 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300"
-                                >
-                                    <XMarkIcon className="mr-1 h-4 w-4" />
-                                    Clear
-                                </button>
-                            )}
-                        </div>
-                    </div>
-
-                    <div className="mb-6">
-                        <div className="space-y-6">
-                            {/* Location Filter */}
-                            <SelectLocation
-                                value={selectedLocation}
-                                onChange={setSelectedLocation}
-                            />
-
-                            {/* Price Range Filter */}
-                            <Field>
-                                <Label>Price Range</Label>
-                                <div className="flex items-center space-x-2">
-                                    <Input
-                                        type="number"
-                                        placeholder="Min"
-                                        value={priceRange.min.toString()}
-                                        onChange={(
-                                            e: React.ChangeEvent<HTMLInputElement>,
-                                        ) =>
-                                            setPriceRange(prev => ({
-                                                ...prev,
-                                                min: parseInt(e.target.value) || 0,
-                                            }))
-                                        }
-                                    />
-                                    <span className="text-zinc-400 dark:text-zinc-500">
-                                        -
-                                    </span>
-                                    <Input
-                                        type="number"
-                                        placeholder="Max"
-                                        value={priceRange.max.toString()}
-                                        onChange={(
-                                            e: React.ChangeEvent<HTMLInputElement>,
-                                        ) =>
-                                            setPriceRange(prev => ({
-                                                ...prev,
-                                                max: parseInt(e.target.value) || 1000,
-                                            }))
-                                        }
-                                    />
+                    <div className="flex flex-col gap-9 lg:flex-row">
+                        <Suggestions
+                            searchTerm={searchQuery}
+                            onSelect={suggestion => setSearchQuery(suggestion)}
+                        />
+                        <div className="lg:flex-1/4">
+                            {/* Filters Section */}
+                            <div className="mb-4">
+                                <div className="flex items-center justify-between">
+                                    <Text className="text-sm font-medium text-zinc-950 dark:text-zinc-500">
+                                        Filters
+                                    </Text>
+                                    {(selectedLocation ||
+                                        priceRange.min > 0 ||
+                                        priceRange.max < 1000) && (
+                                        <button
+                                            onClick={clearFilters}
+                                            className="flex items-center text-sm text-blue-600 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300"
+                                        >
+                                            <XMarkIcon className="mr-1 h-4 w-4" />
+                                            Clear
+                                        </button>
+                                    )}
                                 </div>
-                            </Field>
+                            </div>
+
+                            <div className="mb-6">
+                                <div className="space-y-6">
+                                    {/* Location Filter */}
+                                    <SelectLocation
+                                        value={selectedLocation}
+                                        onChange={setSelectedLocation}
+                                    />
+
+                                    {/* Price Range Filter */}
+                                    <Field>
+                                        <Label>Price Range</Label>
+                                        <div className="flex items-center space-x-2">
+                                            <Input
+                                                type="number"
+                                                placeholder="Min"
+                                                value={priceRange.min.toString()}
+                                                onChange={(
+                                                    e: React.ChangeEvent<HTMLInputElement>,
+                                                ) =>
+                                                    setPriceRange(prev => ({
+                                                        ...prev,
+                                                        min:
+                                                            parseInt(e.target.value) || 0,
+                                                    }))
+                                                }
+                                            />
+                                            <span className="text-zinc-400 dark:text-zinc-500">
+                                                -
+                                            </span>
+                                            <Input
+                                                type="number"
+                                                placeholder="Max"
+                                                value={priceRange.max.toString()}
+                                                onChange={(
+                                                    e: React.ChangeEvent<HTMLInputElement>,
+                                                ) =>
+                                                    setPriceRange(prev => ({
+                                                        ...prev,
+                                                        max:
+                                                            parseInt(e.target.value) ||
+                                                            1000,
+                                                    }))
+                                                }
+                                            />
+                                        </div>
+                                    </Field>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </PopoverPanel>
