@@ -1,4 +1,3 @@
-import { AppShell } from 'components/app-shell'
 import { Provider } from 'components/Provider'
 import type { Metadata } from 'next'
 import 'styles/global.css'
@@ -23,9 +22,7 @@ export default function RootLayout({
                 <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
             </head>
             <body>
-                <Provider>
-                    <AppShell>{children}</AppShell>
-                </Provider>
+                <Provider>{children}</Provider>
             </body>
         </html>
     )

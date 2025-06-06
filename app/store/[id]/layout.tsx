@@ -1,4 +1,5 @@
 import { auth } from 'auth'
+import { AppShell } from 'components/app-shell'
 import { Avatar } from 'components/avatar'
 import { FollowButton } from 'components/follow-button'
 import { Heading } from 'components/heading'
@@ -126,13 +127,15 @@ const Layout = async ({ children }: { children: React.ReactNode }) => {
     if (!session) redirect('/')
 
     return (
-        <div className="grow">
-            <StoreHeader />
-            <div className="mx-auto space-y-6 py-6">
-                <Tab />
-                <div className="py-6">{children}</div>
+        <AppShell>
+            <div className="grow">
+                <StoreHeader />
+                <div className="mx-auto space-y-6 py-6">
+                    <Tab />
+                    <div className="py-6">{children}</div>
+                </div>
             </div>
-        </div>
+        </AppShell>
     )
 }
 
