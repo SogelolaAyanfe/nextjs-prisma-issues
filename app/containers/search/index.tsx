@@ -246,12 +246,14 @@ export const SearchContainer = () => {
                 </div>
             )}
 
-            <Pagination
-                total={results.length}
-                page={1}
-                onChange={() => {}}
-                pageSize={10}
-            />
+            <div className="mt-24 flex justify-center">
+                <Pagination
+                    total={results.length}
+                    page={1}
+                    onChange={() => {}}
+                    pageSize={10}
+                />
+            </div>
         </div>
     )
 }
