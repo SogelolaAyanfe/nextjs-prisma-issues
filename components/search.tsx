@@ -12,18 +12,8 @@ import { useRouter } from 'next/navigation'
 import React, { useState } from 'react'
 import { routes } from 'routes'
 
-type SearchResult = {
-    id: string
-    name: string
-    type: 'store' | 'product'
-    location?: string
-    price?: number
-    imageUrl?: string
-}
-
 type SearchProps = {
     className?: string
-    placeholder?: string
 }
 
 const LOCATION_OPTIONS = [
@@ -72,7 +62,7 @@ const SelectLocation = ({
     )
 }
 
-export function Search({ className, placeholder = 'Search destinations' }: SearchProps) {
+export function Search({ className }: SearchProps) {
     const [searchQuery, setSearchQuery] = useState('')
     const [selectedLocation, setSelectedLocation] = useState('')
     const [priceRange, setPriceRange] = useState<{ min: number; max: number }>({
@@ -126,7 +116,7 @@ export function Search({ className, placeholder = 'Search destinations' }: Searc
                         <MagnifyingGlassIcon data-slot="icon" />
                         <Input
                             type="text"
-                            placeholder={placeholder}
+                            placeholder="Search items"
                             value={searchQuery}
                             onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
                                 setSearchQuery(e.target.value)
@@ -148,7 +138,6 @@ export function Search({ className, placeholder = 'Search destinations' }: Searc
 
                 <PopoverPanel
                     static={isOpen}
-                    // anchor="top"
                     className="absolute top-full left-[50%] mt-2 w-[600px] max-w-[90vw] translate-x-[-50%] rounded-lg bg-white p-6 shadow-lg dark:bg-zinc-900"
                     onBlur={handleBlur}
                 >
