@@ -16,4 +16,14 @@ export const routes = {
         reviews: ({ vendorId }: { vendorId: string }) => `/store/${vendorId}/reviews`,
     },
     product: ({ id }: { id: string }) => `/products/${id}`,
+    search: ({
+        params,
+    }: {
+        params?: {
+            q?: string
+            location?: string
+            maxPrice?: number
+            minPrice?: number
+        }
+    }) => addQueryParams('/search', params),
 }
