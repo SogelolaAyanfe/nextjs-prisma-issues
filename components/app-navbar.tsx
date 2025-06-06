@@ -1,6 +1,6 @@
 'use client'
 
-import { HeartIcon, MapIcon, ShoppingCartIcon } from '@heroicons/react/20/solid'
+import { HeartIcon, ShoppingCartIcon } from '@heroicons/react/20/solid'
 import { Navbar, NavbarItem, NavbarLabel, NavbarSection } from 'components/navbar'
 import { Search } from 'components/search'
 
@@ -17,9 +17,6 @@ export const AppNavbar = () => {
                     <Search className="w-96" />
                 </div>
                 <NavbarSection className="flex-1 justify-end space-x-2">
-                    <NavbarItem href="/explore">
-                        <MapIcon data-slot="icon" />
-                    </NavbarItem>
                     <NavbarItem href="/saved">
                         <HeartIcon data-slot="icon" />
                     </NavbarItem>
