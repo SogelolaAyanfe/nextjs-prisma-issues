@@ -7,7 +7,7 @@ import { Button } from 'components/button'
 import { Field, Fieldset, Label } from 'components/fieldset'
 import { Input, InputGroup } from 'components/input'
 import { NavbarItem } from 'components/navbar'
-import { Popover, PopoverPanel } from 'components/popover'
+import { Popover, PopoverBackdrop, PopoverPanel } from 'components/popover'
 import { Select } from 'components/select'
 import { Text } from 'components/text'
 import { useRouter, useSearchParams } from 'next/navigation'
@@ -158,7 +158,7 @@ export function Search({ className }: SearchProps) {
 
     return (
         <div className={clsx('relative', className)}>
-            <Popover onBlur={handleBlur}>
+            <Popover onBlur={handleBlur} className="relative">
                 <div className="flex items-center">
                     <InputGroup
                         className="relative flex-1"
@@ -191,10 +191,10 @@ export function Search({ className }: SearchProps) {
                         <MagnifyingGlassIcon className="h-4 w-4" />
                     </Button>
                 </div>
-
+                <PopoverBackdrop static={isOpen} />
                 <PopoverPanel
                     static={isOpen}
-                    className="absolute top-full left-[50%] mt-2 !w-[100vw] translate-x-[-50%] rounded-lg bg-white p-6 shadow-lg lg:!w-[800px] lg:max-w-[90vw] dark:bg-zinc-900"
+                    className="absolute top-full left-[50%] mt-3 !w-[100vw] translate-x-[-50%] rounded-lg bg-white p-6 shadow-lg lg:!w-[800px] lg:max-w-[90vw] dark:bg-zinc-900"
                     onBlur={handleBlur}
                 >
                     <div className="flex flex-col gap-9 lg:flex-row">

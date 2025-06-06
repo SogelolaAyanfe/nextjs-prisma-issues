@@ -31,3 +31,10 @@ export function PopoverPanel({ className, ...props }: Headless.PopoverPanelProps
         />
     )
 }
+
+export const PopoverBackdrop = (props: Headless.PopoverBackdropProps) => (
+    <Headless.PopoverBackdrop
+        {...props}
+        className="fixed inset-0 top-[64px] bg-black/15 dark:bg-black/45"
+    />
+)
