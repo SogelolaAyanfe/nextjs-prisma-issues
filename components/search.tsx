@@ -2,6 +2,7 @@
 
 import { MagnifyingGlassIcon, XMarkIcon } from '@heroicons/react/20/solid'
 import clsx from 'clsx'
+import { Badge } from 'components/badge'
 import { Button } from 'components/button'
 import { Field, Fieldset, Label } from 'components/fieldset'
 import { Input, InputGroup } from 'components/input'
@@ -9,7 +10,7 @@ import { NavbarItem } from 'components/navbar'
 import { Popover, PopoverPanel } from 'components/popover'
 import { Select } from 'components/select'
 import { Text } from 'components/text'
-import { useRouter } from 'next/navigation'
+import { useRouter, useSearchParams } from 'next/navigation'
 import React, { useState } from 'react'
 import { routes } from 'routes'
 
@@ -39,7 +40,7 @@ const SelectLocation = ({
     value,
     onChange,
 }: {
-    value: string
+    value?: string
     onChange: (value: string) => void
 }) => {
     return (
@@ -71,11 +72,11 @@ const Suggestions = ({
     onSelect: (suggestion: string) => void
 }) => {
     const suggestions = [
-        'Shoes',
-        'Clothes',
-        'Electronics',
-        'Furniture',
-        'Books',
+        'MacBook Pro M3',
+        'Backpack',
+        'Wireless Headphones',
+        'Gaming Mouse',
+        'Smartphone',
         'Toys',
         'Other',
     ]
@@ -102,11 +103,18 @@ const Suggestions = ({
 }
 
 export function Search({ className }: SearchProps) {
-    const [searchQuery, setSearchQuery] = useState('')
-    const [selectedLocation, setSelectedLocation] = useState('')
+    const params = useSearchParams()
+
+    const minPrice = params.get('minPrice')
+    const maxPrice = params.get('maxPrice')
+    const location = params.get('location')
+    const query = params.get('q')
+
+    const [searchQuery, setSearchQuery] = useState(query ?? '')
+    const [selectedLocation, setSelectedLocation] = useState(location ?? '')
     const [priceRange, setPriceRange] = useState<{ min: number; max: number }>({
-        min: 0,
-        max: 1000,
+        min: minPrice ? parseInt(minPrice) : 0,
+        max: maxPrice ? parseInt(maxPrice) : 1000,
     })
     const [isOpen, setIsOpen] = useState(false)
 
@@ -124,6 +132,7 @@ export function Search({ className }: SearchProps) {
     }
 
     const handleSearch = () => {
+        setIsOpen(false)
         router.push(
             routes.search({
                 params: {
@@ -150,8 +159,11 @@ export function Search({ className }: SearchProps) {
     return (
         <div className={clsx('relative', className)}>
             <Popover onBlur={handleBlur}>
-                <div className="flex items-center" onClick={() => setIsOpen(true)}>
-                    <InputGroup className="flex-1">
+                <div className="flex items-center">
+                    <InputGroup
+                        className="relative flex-1"
+                        onClick={() => setIsOpen(true)}
+                    >
                         <MagnifyingGlassIcon data-slot="icon" />
                         <Input
                             type="text"
@@ -164,6 +176,11 @@ export function Search({ className }: SearchProps) {
                             onFocus={handleFocus}
                             className="rounded-full border-0 bg-transparent"
                         />
+                        {!isOpen && (
+                            <div className="absolute top-[50%] right-2 z-[-10] flex translate-y-[-50%] gap-1">
+                                {selectedLocation && <Badge>{selectedLocation}</Badge>}
+                            </div>
+                        )}
                     </InputGroup>
                     <Button
                         color="blue"

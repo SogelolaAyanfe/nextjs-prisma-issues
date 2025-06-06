@@ -13,7 +13,7 @@ export const Navbar = ({
 }: React.ComponentPropsWithoutRef<'nav'>) => (
     <nav
         {...props}
-        className={clsx(className, 'flex flex-1 items-center gap-4 py-2.5')}
+        className={clsx(className, 'flex flex-1 items-center gap-4 py-3.5')}
     />
 )
 

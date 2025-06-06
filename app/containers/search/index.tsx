@@ -156,16 +156,6 @@ export const SearchContainer = () => {
             {/* Search Header */}
             <div>
                 <div className="mt-4 flex flex-wrap gap-2 text-sm text-zinc-600 dark:text-zinc-400">
-                    {query && (
-                        <span className="rounded-full bg-blue-100 px-3 py-1 text-blue-800 dark:bg-blue-900 dark:text-blue-200">
-                            Query: "{query}"
-                        </span>
-                    )}
-                    {location && (
-                        <span className="rounded-full bg-green-100 px-3 py-1 text-green-800 dark:bg-green-900 dark:text-green-200">
-                            Location: {location}
-                        </span>
-                    )}
                     {(minPrice > 0 || maxPrice < 1000) && (
                         <span className="rounded-full bg-yellow-100 px-3 py-1 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200">
                             ${minPrice} - ${maxPrice}
