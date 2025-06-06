@@ -251,7 +251,7 @@ export const SearchContainer = () => {
                     total={results.length}
                     page={1}
                     onChange={() => {}}
-                    pageSize={10}
+                    pageSize={12}
                 />
             </div>
         </div>
