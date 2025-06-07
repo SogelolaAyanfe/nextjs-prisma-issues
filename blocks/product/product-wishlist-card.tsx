@@ -123,10 +123,6 @@ export const ProductWishlistCard = ({
                     value={quantity}
                     onChange={e => setQuantity(Number(e.target.value))}
                     className="flex-1"
-                    onClick={(e: React.MouseEvent) => {
-                        e.preventDefault()
-                        e.stopPropagation()
-                    }}
                 >
                     {Array.from({ length: 10 }, (_, i) => (
                         <option key={i + 1} value={i + 1}>
