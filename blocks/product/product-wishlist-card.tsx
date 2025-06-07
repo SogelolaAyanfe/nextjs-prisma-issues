@@ -135,8 +135,8 @@ export const ProductWishlistCard = ({
                     ))}
                 </Select>
                 <Button
-                    color="zinc"
-                    className="px-3 py-2"
+                    color="white"
+                    className="!rounded-full px-3 py-2"
                     onClick={(e: React.MouseEvent) => {
                         e.preventDefault()
                         e.stopPropagation()
@@ -149,7 +149,7 @@ export const ProductWishlistCard = ({
                         )
                     }}
                 >
-                    <ShoppingCartIcon className="h-5 w-5 !text-white" />
+                    <ShoppingCartIcon className="h-5 w-5 !text-zinc-600" />
                 </Button>
             </div>
         </div>
