@@ -39,7 +39,7 @@ const mockWishlistProducts: WishlistProduct[] = [
         images: [
             'https://images.pexels.com/photos/3587478/pexels-photo-3587478.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
         ],
-        availabilityStatus: ProductAvailabilityStatus.LOW_STOCK,
+        availabilityStatus: ProductAvailabilityStatus.LIMITED_AVAILABILITY,
         rating: 4.6,
     },
     {
@@ -63,7 +63,7 @@ const mockWishlistProducts: WishlistProduct[] = [
         images: [
             'https://images.pexels.com/photos/16005007/pexels-photo-16005007/free-photo-of-apple-iphone-14-pro-max-mobile-phone.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
         ],
-        availabilityStatus: ProductAvailabilityStatus.IN_STOCK,
+        availabilityStatus: ProductAvailabilityStatus.LIMITED_AVAILABILITY,
         rating: 4.5,
     },
     {

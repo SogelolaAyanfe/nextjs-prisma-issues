@@ -1,6 +1,7 @@
 'use client'
 
 import { HeartIcon } from '@heroicons/react/20/solid'
+import { AddToCartButton } from 'blocks/product/add-to-cart-button'
 import { GroupedProducts } from 'blocks/product/grouped-products'
 import { Reviews } from 'blocks/review/reviews'
 import { VendorCard } from 'blocks/store/vendor-card'
@@ -105,9 +106,7 @@ const AddToCartButtonWithSaveForLater = ({
                     Vendor typically confirms within 3 hours
                 </Text>
                 <div className="flex w-full items-center gap-4">
-                    <Button size="lg" color="blue" className="w-full" onClick={onClick}>
-                        Request Availability
-                    </Button>
+                    <AddToCartButton product={product} onClick={onClick} />
                     <SaveForLaterButton />
                 </div>
             </div>
@@ -116,9 +115,7 @@ const AddToCartButtonWithSaveForLater = ({
 
     return (
         <div className="flex w-full items-center gap-4">
-            <Button size="lg" color="blue" className="w-full" onClick={onClick}>
-                Add to Cart
-            </Button>
+            <AddToCartButton product={product} onClick={onClick} />
             <SaveForLaterButton />
         </div>
     )

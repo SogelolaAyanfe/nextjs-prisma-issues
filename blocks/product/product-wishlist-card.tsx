@@ -1,9 +1,9 @@
 'use client'
 
-import { HeartIcon, ShoppingCartIcon } from '@heroicons/react/20/solid'
+import { HeartIcon } from '@heroicons/react/20/solid'
+import { AddToCartButton } from 'blocks/product/add-to-cart-button'
 import { AvailabilityBadge } from 'components/availability-badge'
 import { Avatar } from 'components/avatar'
-import { Button } from 'components/button'
 import { Select } from 'components/select'
 import { format } from 'lib/money'
 import { Product } from 'modules/domain/product-manager/entities/product'
@@ -119,10 +119,13 @@ export const ProductWishlistCard = ({
             </Link>
             {/* Add to Cart Section - Always visible */}
             <div className="mt-3 flex items-center gap-3">
+                <div className="flex-3/4">
+                    <AddToCartButton product={product} onClick={() => {}} size="md" />
+                </div>
                 <Select
                     value={quantity}
                     onChange={e => setQuantity(Number(e.target.value))}
-                    className="flex-1"
+                    className="flex-1/4"
                 >
                     {Array.from({ length: 10 }, (_, i) => (
                         <option key={i + 1} value={i + 1}>
@@ -130,23 +133,6 @@ export const ProductWishlistCard = ({
                         </option>
                     ))}
                 </Select>
-                <Button
-                    color="white"
-                    className="!rounded-full px-3 py-2"
-                    onClick={(e: React.MouseEvent) => {
-                        e.preventDefault()
-                        e.stopPropagation()
-                        // Add to cart logic here
-                        console.log(
-                            'Adding to cart:',
-                            product.name,
-                            'Quantity:',
-                            quantity,
-                        )
-                    }}
-                >
-                    <ShoppingCartIcon className="h-5 w-5 !text-zinc-600" />
-                </Button>
             </div>
         </div>
     )
