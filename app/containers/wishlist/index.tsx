@@ -1,6 +1,6 @@
 'use client'
 
-import { ProductMiniCard } from 'blocks/product/product-mini-card'
+import { ProductWishlistCard } from 'blocks/product/product-wishlist-card'
 import { Heading } from 'components/heading'
 import { ProductAvailabilityStatus } from 'modules/domain/product-manager/entities/product'
 import { useEffect, useState } from 'react'
@@ -92,6 +92,12 @@ export const WishlistContainer = () => {
         }, 300)
     }, [])
 
+    const handleRemoveProduct = (productId: string) => {
+        setProducts(prevProducts =>
+            prevProducts.filter(product => product.id !== productId),
+        )
+    }
+
     return (
         <div className="space-y-8">
             {/* Page Header */}
@@ -114,10 +120,11 @@ export const WishlistContainer = () => {
                     {products.length > 0 ? (
                         <div className="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4">
                             {products.map(product => (
-                                <ProductMiniCard
+                                <ProductWishlistCard
                                     key={product.id}
                                     product={product}
                                     showVendor={true}
+                                    onRemove={handleRemoveProduct}
                                 />
                             ))}
                         </div>

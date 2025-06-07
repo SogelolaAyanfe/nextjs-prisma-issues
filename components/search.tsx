@@ -188,7 +188,7 @@ export function Search({ className }: SearchProps) {
                         onClick={handleSearch}
                         className="ml-2 rounded-full px-4 py-2"
                     >
-                        <MagnifyingGlassIcon className="h-4 w-4" />
+                        <MagnifyingGlassIcon className="h-4 w-4 !text-white" />
                     </Button>
                 </div>
                 <PopoverBackdrop static={isOpen} />

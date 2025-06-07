@@ -1,23 +1,28 @@
 'use client'
 
-import { HeartIcon } from '@heroicons/react/20/solid'
+import { HeartIcon, ShoppingCartIcon } from '@heroicons/react/20/solid'
 import { AvailabilityBadge } from 'components/availability-badge'
 import { Avatar } from 'components/avatar'
+import { Button } from 'components/button'
+import { Select } from 'components/select'
 import { format } from 'lib/money'
 import { Product } from 'modules/domain/product-manager/entities/product'
 import { vendorMock } from 'modules/domain/vendor-manager/entities/vendor.mock'
 import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
+import { useState } from 'react'
 import { routes } from 'routes'
 
-type ProductMiniCardProps = {
+type ProductWishlistCardProps = {
     product: Pick<
         Product,
         'name' | 'images' | 'price' | 'discountedPrice' | 'availabilityStatus' | 'id'
     >
     showVendor?: boolean
+    onRemove?: (productId: string) => void
 }
+
 const useIsStorePage = () => {
     const pathname = usePathname()
     const storeRoutePattern = routes.store.home({ id: ':id' })
@@ -27,8 +32,23 @@ const useIsStorePage = () => {
     return isStorePage
 }
 
-export const ProductMiniCard = ({ product, showVendor = true }: ProductMiniCardProps) => {
+export const ProductWishlistCard = ({
+    product,
+    showVendor = true,
+    onRemove,
+}: ProductWishlistCardProps) => {
     const isStorePage = useIsStorePage()
+    const [quantity, setQuantity] = useState(1)
+
+    const handleRemove = (e: React.MouseEvent) => {
+        e.preventDefault()
+        e.stopPropagation()
+        if (onRemove) {
+            onRemove(product.id)
+        }
+        console.log('Removing from wishlist:', product.name)
+    }
+
     return (
         <div className="relative w-full space-y-3">
             {!isStorePage && showVendor && (
@@ -60,9 +80,16 @@ export const ProductMiniCard = ({ product, showVendor = true }: ProductMiniCardP
                         fill
                         className="object-cover object-center transition group-hover:opacity-75"
                     />
-                    <div className="align-center absolute top-2 right-2 flex justify-center rounded-full bg-white p-[7px] opacity-0 shadow-md transition group-hover:opacity-100">
-                        <HeartIcon color="grey" data-slot="icon" className="size-5" />
-                    </div>
+                    <button
+                        onClick={handleRemove}
+                        className="align-center absolute top-2 right-2 flex cursor-pointer justify-center rounded-full bg-white p-[7px] opacity-0 shadow-md transition group-hover:opacity-100 hover:bg-red-50"
+                    >
+                        <HeartIcon
+                            color="grey"
+                            data-slot="icon"
+                            className="size-5 text-rose-500"
+                        />
+                    </button>
                 </div>
 
                 {/* Content */}
@@ -90,6 +117,41 @@ export const ProductMiniCard = ({ product, showVendor = true }: ProductMiniCardP
                     </div>
                 </div>
             </Link>
+            {/* Add to Cart Section - Always visible */}
+            <div className="mt-3 flex items-center gap-3">
+                <Select
+                    value={quantity}
+                    onChange={e => setQuantity(Number(e.target.value))}
+                    className="flex-1"
+                    onClick={(e: React.MouseEvent) => {
+                        e.preventDefault()
+                        e.stopPropagation()
+                    }}
+                >
+                    {Array.from({ length: 10 }, (_, i) => (
+                        <option key={i + 1} value={i + 1}>
+                            {i + 1}
+                        </option>
+                    ))}
+                </Select>
+                <Button
+                    color="zinc"
+                    className="px-3 py-2"
+                    onClick={(e: React.MouseEvent) => {
+                        e.preventDefault()
+                        e.stopPropagation()
+                        // Add to cart logic here
+                        console.log(
+                            'Adding to cart:',
+                            product.name,
+                            'Quantity:',
+                            quantity,
+                        )
+                    }}
+                >
+                    <ShoppingCartIcon className="h-5 w-5 !text-white" />
+                </Button>
+            </div>
         </div>
     )
 }
