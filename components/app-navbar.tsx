@@ -3,6 +3,7 @@
 import { HeartIcon, ShoppingCartIcon } from '@heroicons/react/20/solid'
 import { Navbar, NavbarItem, NavbarLabel, NavbarSection } from 'components/navbar'
 import { Search } from 'components/search'
+import { routes } from 'routes'
 
 export const AppNavbar = () => {
     return (
@@ -17,7 +18,7 @@ export const AppNavbar = () => {
                     <Search className="w-96" />
                 </div>
                 <NavbarSection className="flex-1 justify-end space-x-2">
-                    <NavbarItem href="/saved">
+                    <NavbarItem href={routes.wishlist()}>
                         <HeartIcon data-slot="icon" />
                     </NavbarItem>
                     <NavbarItem href="/cart">

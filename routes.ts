@@ -16,6 +16,7 @@ export const routes = {
         reviews: ({ vendorId }: { vendorId: string }) => `/store/${vendorId}/reviews`,
     },
     product: ({ id }: { id: string }) => `/products/${id}`,
+    wishlist: () => '/wishlist',
     search: ({
         params,
     }: {
