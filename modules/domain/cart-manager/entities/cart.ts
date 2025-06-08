@@ -6,6 +6,7 @@ export const CartItemSchema = z.object({
     price: z.number().nonnegative(),
     total: z.number().nonnegative(),
     vendorId: z.string(),
+    attributes: z.record(z.string()),
 })
 
 export const CartSchema = z.object({

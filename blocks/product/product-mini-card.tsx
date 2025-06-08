@@ -53,7 +53,7 @@ export const ProductMiniCard = ({ product, showVendor = true }: ProductMiniCardP
                 className="group relative flex cursor-pointer flex-col overflow-hidden"
             >
                 {/* Image container */}
-                <div className="relative w-full overflow-hidden rounded-lg border border-zinc-200 bg-zinc-100 pb-[120%] dark:border-zinc-800 dark:bg-zinc-800">
+                <div className="relative w-full overflow-hidden rounded-lg border border-zinc-200 bg-zinc-100 pb-[100%] dark:border-zinc-800 dark:bg-zinc-800">
                     <Image
                         src={product.images[0]}
                         alt={product.name}

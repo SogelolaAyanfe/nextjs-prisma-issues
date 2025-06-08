@@ -1,14 +1,16 @@
 import clsx from 'clsx'
 import { Avatar } from 'components/avatar'
-import { Badge } from 'components/badge'
-import type { CartItem } from 'components/cart/types'
+import { Select } from 'components/select'
 import { Text, TextLink } from 'components/text'
 import { VerifiedBadge } from 'components/verified-badge'
+import { CartItem } from 'modules/domain/cart-manager/entities/cart'
+import { productMock } from 'modules/domain/product-manager/entities/product.mock'
 import {
     mockRating,
     mockReviewCount,
 } from 'modules/domain/review-manager/entities/review.mock'
 import { vendorMock } from 'modules/domain/vendor-manager/entities/vendor.mock'
+import Image from 'next/image'
 import { FaStar } from 'react-icons/fa'
 import { routes } from 'routes'
 
@@ -18,8 +20,9 @@ type CartItemGroupProps = {
     onClick: () => void
 }
 
-export const CartItemGroup = ({ items, isSelected, onClick }: CartItemGroupProps) => {
+export const CartItems = ({ items, isSelected, onClick }: CartItemGroupProps) => {
     const formatCurrency = (amount: number) => `GBP ${amount.toFixed(2)}`
+    const product = productMock
 
     return (
         <div
@@ -55,31 +58,54 @@ export const CartItemGroup = ({ items, isSelected, onClick }: CartItemGroupProps
                 </div>
             </div>
 
-            <div className="space-y-3">
+            <div className="space-y-6">
                 {items.map(item => (
-                    <div key={item.id} className="flex items-center gap-3">
-                        <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-zinc-100 dark:bg-zinc-800">
-                            <Text className="text-xs">{item.image ? '🖼️' : '📦'}</Text>
+                    <div key={item.productId} className="flex gap-3">
+                        <div className="relative flex h-24 w-24 items-center justify-center overflow-hidden rounded-lg bg-zinc-100 dark:bg-zinc-800">
+                            <Image
+                                src={product.images[0]}
+                                alt={product.name}
+                                fill
+                                className="object-cover object-center transition group-hover:opacity-75"
+                            />
                         </div>
 
                         <div className="flex-1">
-                            <Text className="text-sm font-medium">{item.name}</Text>
-                            {item.variant && (
+                            <Text className="text-sm font-medium">{product.name}</Text>
+                            {item.attributes && (
                                 <Text className="text-xs text-zinc-600 dark:text-zinc-400">
-                                    {item.variant}
+                                    {Object.entries(item.attributes)
+                                        .map(([key, value]) => `${key}: ${value}`)
+                                        .join(', ')}
                                 </Text>
                             )}
+                            <Select className="!w-18 mt-2" value={item.quantity}>
+                                <option value="0">0</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                            </Select>
                         </div>
 
                         <div className="text-right">
                             <Text className="font-semibold">
-                                {formatCurrency(item.price)}
+                                {product.discountedPrice ? (
+                                    <>
+                                        <span className="line-through">
+                                            {formatCurrency(item.price)}
+                                        </span>
+                                        <span className="ml-2">
+                                            {formatCurrency(item.price)}
+                                        </span>
+                                    </>
+                                ) : (
+                                    formatCurrency(item.price)
+                                )}
                             </Text>
-                            {item.discountPercentage && (
-                                <Badge color="green" className="ml-2 text-xs">
-                                    {item.discountPercentage}% off
-                                </Badge>
-                            )}
                         </div>
                     </div>
                 ))}

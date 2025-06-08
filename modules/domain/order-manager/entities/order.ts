@@ -5,6 +5,8 @@ export const OrderItemSchema = z.object({
     quantity: z.number().int().positive(),
     price: z.number().nonnegative(),
     total: z.number().nonnegative(),
+    vendorId: z.string(),
+    attributes: z.record(z.string()),
 })
 
 export const ShippingAddressSchema = z.object({
