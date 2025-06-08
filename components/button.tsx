@@ -182,7 +182,7 @@ export const Button = forwardRef(function Button(
             ? styles.outline
             : plain
               ? styles.plain
-              : clsx(styles.solid, styles.colors[color ?? 'dark/zinc']),
+              : clsx(styles.solid, styles.colors[color ?? 'blue']),
         size === 'sm' &&
             'px-[calc(--spacing(2.5)-1px)] py-[calc(--spacing(1.5)-1px)] sm:px-[calc(--spacing(2)-1px)] sm:py-[calc(--spacing(1)-1px)] sm:text-xs/5',
         size === 'lg' &&

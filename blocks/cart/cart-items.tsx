@@ -27,7 +27,7 @@ export const CartItems = ({ items, isSelected, onClick }: CartItemGroupProps) =>
     return (
         <div
             className={clsx(
-                'group relative cursor-pointer rounded-2xl border-2 p-4 transition-all duration-200 hover:shadow-lg',
+                'group relative cursor-pointer rounded-2xl border-1 p-4 transition-all duration-200 hover:shadow-lg',
                 isSelected
                     ? 'border-green-500 bg-green-50 shadow-lg shadow-green-500/10 dark:bg-green-950/20'
                     : 'border-zinc-200 hover:border-green-500 hover:shadow-green-500/5 dark:border-zinc-800 dark:hover:border-green-500',

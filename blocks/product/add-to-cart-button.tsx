@@ -5,7 +5,7 @@ import { Product, ProductAvailabilityStatus } from 'modules/domain/product-manag
 
 const buttonText = (product: Pick<Product, 'availabilityStatus'>) => {
     if (product.availabilityStatus === ProductAvailabilityStatus.LIMITED_AVAILABILITY) {
-        return 'Request Availability'
+        return 'Add to cart'
     }
     return 'Add to Cart'
 }
