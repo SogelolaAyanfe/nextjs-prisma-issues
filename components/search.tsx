@@ -184,7 +184,6 @@ export function Search({ className }: SearchProps) {
                     </InputGroup>
                     <Button
                         color="blue"
-                        onFocus={handleFocus}
                         onClick={handleSearch}
                         className="ml-2 rounded-full px-4 py-2"
                     >
