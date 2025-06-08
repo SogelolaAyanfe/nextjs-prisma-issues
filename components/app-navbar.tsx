@@ -40,9 +40,9 @@ export const AppNavbar = () => {
                         <Dropdown>
                             <DropdownButton as={SidebarItem}>
                                 <Avatar
-                                    src="/profile-photo.jpg"
-                                    className="size-10"
-                                    alt=""
+                                    src="https://images.pexels.com/photos/9072338/pexels-photo-9072338.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+                                    className="size-10 overflow-hidden rounded-full"
+                                    alt="avatar"
                                 />
                                 <ChevronUpIcon />
                             </DropdownButton>

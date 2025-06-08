@@ -7,14 +7,21 @@ import { Link } from 'components/link'
 import type React from 'react'
 
 export function Dropdown(props: Headless.MenuProps) {
-    return <Headless.Menu {...props}  />
+    return <Headless.Menu {...props} />
 }
 
 export function DropdownButton<T extends React.ElementType = typeof Button>({
     as = Button,
+    className,
     ...props
 }: { className?: string } & Omit<Headless.MenuButtonProps<T>, 'className'>) {
-    return <Headless.MenuButton as={as} {...props} />
+    return (
+        <Headless.MenuButton
+            as={as}
+            className={clsx('cursor-pointer', className)}
+            {...props}
+        />
+    )
 }
 
 export function DropdownMenu({
