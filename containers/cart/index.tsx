@@ -3,7 +3,7 @@
 import { Badge } from 'components/badge'
 import { Button } from 'components/button'
 import { Card } from 'components/card'
-import { CartItems } from 'components/cart-items'
+import { CartItems } from 'blocks/cart/cart-items'
 import { Divider } from 'components/divider'
 import { Field, Label } from 'components/fieldset'
 import { Heading } from 'components/heading'
