@@ -29,8 +29,8 @@ export const CartItems = ({ items, isSelected, onClick }: CartItemGroupProps) =>
             className={clsx(
                 'group relative cursor-pointer rounded-2xl border-1 p-4 transition-all duration-200 hover:shadow-lg',
                 isSelected
-                    ? 'border-green-500 bg-green-50 shadow-lg shadow-green-500/10 dark:bg-green-950/20'
-                    : 'border-zinc-200 hover:border-green-500 hover:shadow-green-500/5 dark:border-zinc-800 dark:hover:border-green-500',
+                    ? 'bg-green-50 shadow-lg shadow-zinc-500/50 dark:shadow-zinc-950/50 dark:bg-zinc-800/40'
+                    : 'border-zinc-200 hover:shadow-zinc-500/50 dark:hover:shadow-zinc-950/50 dark:border-zinc-800',
             )}
             onClick={onClick}
         >
@@ -79,7 +79,7 @@ export const CartItems = ({ items, isSelected, onClick }: CartItemGroupProps) =>
                                         .join(', ')}
                                 </Text>
                             )}
-                            <Select className="!w-18 mt-2" value={item.quantity}>
+                            <Select className="mt-2 !w-18" value={item.quantity}>
                                 <option value="0">0</option>
                                 <option value="1">1</option>
                                 <option value="2">2</option>

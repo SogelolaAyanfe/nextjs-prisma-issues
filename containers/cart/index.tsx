@@ -1,9 +1,9 @@
 'use client'
 
+import { CartItems } from 'blocks/cart/cart-items'
 import { Badge } from 'components/badge'
 import { Button } from 'components/button'
 import { Card } from 'components/card'
-import { CartItems } from 'blocks/cart/cart-items'
 import { Divider } from 'components/divider'
 import { Field, Label } from 'components/fieldset'
 import { Heading } from 'components/heading'
@@ -15,10 +15,13 @@ import { Cart, mockCart } from 'modules/domain/cart-manager/entities'
 import { Order, OrderStatus, PaymentStatus } from 'modules/domain/order-manager/entities'
 import { orderMock } from 'modules/domain/order-manager/entities/order.mock'
 import { vendorMock } from 'modules/domain/vendor-manager/entities/vendor.mock'
+import { useRouter } from 'next/navigation'
 import { useEffect, useState } from 'react'
+import { routes } from 'routes'
 
-const Checkout = ({ cart }: { cart: Pick<Cart, 'subtotal'> }) => {
+const Checkout = ({ cart }: { cart: Pick<Cart, 'subtotal' | 'id'> }) => {
     const [order, setOrder] = useState<Order | null>(null)
+    const router = useRouter()
 
     // simulate change order status to approved when order status is pending
     useEffect(() => {
@@ -33,7 +36,13 @@ const Checkout = ({ cart }: { cart: Pick<Cart, 'subtotal'> }) => {
             order?.status === OrderStatus.approved &&
             order.paymentStatus === PaymentStatus.awaiting_approval
         ) {
-            setTimeout(() => setOrder({ ...order, status: OrderStatus.processing }), 5000)
+            setTimeout(() => {
+                setOrder({ ...order, status: OrderStatus.processing })
+                // redirect to cart page with refresh
+                router.replace(routes.cart(), {
+                    scroll: false,
+                })
+            }, 5000)
         }
     }, [order])
 

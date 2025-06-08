@@ -27,4 +27,5 @@ export const routes = {
             minPrice?: number
         }
     }) => addQueryParams('/search', params),
+    cart: (args?: { id: string }) => (args?.id ? `/cart/${args.id}` : '/cart'),
 }
