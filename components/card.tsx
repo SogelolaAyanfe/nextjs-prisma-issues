@@ -12,12 +12,13 @@ type CardProps = {
     className?: string
 }
 
-export const Card = forwardRef(
-    ({ children, className }: CardProps, ref: React.ForwardedRef<HTMLDivElement>) => {
-        return (
-            <div ref={ref} className={clsx(className, styles.base)}>
-                {children}
-            </div>
-        )
-    },
-)
+export const Card = forwardRef<HTMLDivElement, CardProps>(function Card(
+    { children, className }: CardProps,
+    ref: React.ForwardedRef<HTMLDivElement>,
+) {
+    return (
+        <div ref={ref} className={clsx(styles.base, className)}>
+            {children}
+        </div>
+    )
+})

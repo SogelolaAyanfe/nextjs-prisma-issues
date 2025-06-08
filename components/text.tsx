@@ -5,11 +5,11 @@ export function Text({ className, ...props }: React.ComponentPropsWithoutRef<'p'
     return (
         <p
             data-slot="text"
-            {...props}
             className={clsx(
-                'text-base/6 text-zinc-950 sm:text-sm/6 dark:text-white',
+                '!text-base/6 text-zinc-950 sm:text-sm/6 dark:text-white',
                 className,
             )}
+            {...props}
         />
     )
 }

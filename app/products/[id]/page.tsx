@@ -1,5 +1,5 @@
-import { ProductPage } from 'app/containers/products'
 import { AppShell } from 'components/app-shell'
+import { ProductPage } from 'containers/products'
 
 export const Page = async ({ params }: { params: { id: string } }) => {
     return (

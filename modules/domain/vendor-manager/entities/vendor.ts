@@ -27,6 +27,12 @@ export const VendorSchema = z.object({
         website: z.string().url().nullable(),
         whatsapp: z.string().url().nullable(),
     }),
+    bankDetails: z.object({
+        bankName: z.string(),
+        accountName: z.string(),
+        accountNumber: z.string(),
+        sortCode: z.string(),
+    }),
 })
 
 export type Vendor = z.infer<typeof VendorSchema>

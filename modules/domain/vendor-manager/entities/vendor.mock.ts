@@ -20,4 +20,10 @@ export const vendorMock: Vendor = {
         website: 'https://www.nike.com',
         whatsapp: 'https://wa.me/1234567890',
     },
+    bankDetails: {
+        bankName: 'Access Bank',
+        accountName: 'John Doe',
+        accountNumber: '1234567890',
+        sortCode: '123456',
+    },
 }

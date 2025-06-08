@@ -1,6 +1,6 @@
-import { WishlistContainer } from 'app/containers/wishlist'
 import { auth } from 'auth'
 import { AppShell } from 'components/app-shell'
+import { WishlistContainer } from 'containers/wishlist'
 import { redirect } from 'next/navigation'
 
 const WishlistPage = async () => {
