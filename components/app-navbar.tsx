@@ -47,7 +47,7 @@ export const AppNavbar = () => {
                                 <ChevronUpIcon />
                             </DropdownButton>
                             <DropdownMenu className="min-w-64" anchor="top start">
-                                <DropdownItem href="/my-orders">
+                                <DropdownItem href={routes.orders()}>
                                     <DropdownLabel>My orders</DropdownLabel>
                                 </DropdownItem>
                                 <DropdownItem href="/my-profile">

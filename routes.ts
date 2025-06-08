@@ -28,4 +28,5 @@ export const routes = {
         }
     }) => addQueryParams('/search', params),
     cart: (args?: { id: string }) => (args?.id ? `/cart/${args.id}` : '/cart'),
+    orders: (args?: { id: string }) => (args?.id ? `/orders/${args.id}` : '/orders'),
 }

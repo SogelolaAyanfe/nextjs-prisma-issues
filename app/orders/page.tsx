@@ -1,10 +1,10 @@
 import { AppShell } from 'components/app-shell'
-import { MyOrdersPage } from 'containers/my-orders'
+import { OrdersPage } from 'containers/orders'
 
 export default function Page() {
     return (
         <AppShell>
-            <MyOrdersPage />
+            <OrdersPage />
         </AppShell>
     )
 }

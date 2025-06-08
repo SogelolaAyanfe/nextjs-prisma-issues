@@ -10,6 +10,7 @@ import { orderMock } from 'modules/domain/order-manager/entities/order.mock'
 import { productMock } from 'modules/domain/product-manager/entities/product.mock'
 import Image from 'next/image'
 import { useEffect, useState } from 'react'
+import { routes } from 'routes'
 
 const getStatusColor = (status: keyof typeof OrderStatus) => {
     switch (status) {
@@ -122,7 +123,7 @@ const OrderCard = ({ order }: { order: Order }) => {
                                 </div>
                             ))}
                         </div>
-                        <Button>View Order</Button>
+                        <Button href={routes.orders({ id: order.id })}>View Order</Button>
                     </div>
                 </div>
             </div>
@@ -130,7 +131,7 @@ const OrderCard = ({ order }: { order: Order }) => {
     )
 }
 
-const MyOrdersPageInner = ({
+const OrdersPageInner = ({
     isLoading,
     orders,
 }: {
@@ -306,7 +307,7 @@ const mockOrders: Order[] = [
     },
 ]
 
-export const MyOrdersPage = () => {
+export const OrdersPage = () => {
     const [isLoading, setIsLoading] = useState(true)
 
     useEffect(() => {
@@ -315,5 +316,5 @@ export const MyOrdersPage = () => {
         return () => clearTimeout(timer)
     }, [])
 
-    return <MyOrdersPageInner isLoading={isLoading} orders={mockOrders} />
+    return <OrdersPageInner isLoading={isLoading} orders={mockOrders} />
 }
