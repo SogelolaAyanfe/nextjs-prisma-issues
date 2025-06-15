@@ -70,8 +70,8 @@ const OrderCard = ({ order }: { order: Order }) => {
     return (
         <div className="group relative rounded-2xl border-1 border-zinc-200 p-4 dark:border-zinc-800">
             <div className="flex flex-col gap-4">
-                <div className="flex items-end justify-between">
-                    <div className="flex flex-col gap-4">
+                <div className="flex justify-between">
+                    <div className="flex h-full flex-col items-start gap-4">
                         <div>
                             <Heading level={3} className="!text-lg font-semibold">
                                 Order #{order.orderNumber}
