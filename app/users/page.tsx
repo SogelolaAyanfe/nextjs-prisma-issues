@@ -1,6 +1,8 @@
+'use client'
+
 import { trpc } from 'modules/infrastructure/api/trpc/client'
 
-const Page = async () => {
+const Page = () => {
     const users = trpc.users.list.useQuery()
 
     return (
