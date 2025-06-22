@@ -4,11 +4,12 @@ import { EmailTransport } from 'modules/infrastructure/email-transport/interface
 import { EmailTransportLayerLive } from 'modules/infrastructure/email-transport/live'
 import { appRunPromise } from 'modules/infrastructure/runtime'
 import { nanoid } from 'nanoid'
+import { NodemailerConfig } from 'next-auth/providers/nodemailer'
 
 export const EMAIL_LINKS_MAX_AGE_30_MINUTES = 30 * 60
 export const generateVerificationToken = nanoid(32)
 
-let emailProvider
+let emailProvider: NodemailerConfig
 
 if (process.env.NEXT_RUNTIME !== 'edge') {
     const { default: Nodemailer } = await import('next-auth/providers/nodemailer')
