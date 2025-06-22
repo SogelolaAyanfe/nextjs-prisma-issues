@@ -110,7 +110,7 @@ const OrderDetailsSection = ({ order }: { order: Order }) => (
             <Text className="text-sm text-zinc-600 dark:text-zinc-400">
                 Payment Status:{' '}
                 <span className="font-bold text-zinc-900 dark:text-white">
-                    It's In Progress
+                    It&lsquo;s In Progress
                 </span>
             </Text>
         </div>
