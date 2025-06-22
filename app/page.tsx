@@ -1,6 +1,4 @@
 import { auth } from 'auth'
-import { AppShell } from 'components/app-shell'
-import { FeaturedProducts } from 'blocks/product/featured-products'
 import { redirect } from 'next/navigation'
 
 const Home = async () => {
@@ -8,9 +6,9 @@ const Home = async () => {
     if (!session) redirect('/sign-in')
 
     return (
-        <AppShell>
-            <FeaturedProducts />
-        </AppShell>
+        <div>
+            <h1>Hello</h1>
+        </div>
     )
 }
 

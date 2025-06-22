@@ -1,8 +1,8 @@
 'use client'
 
-import { trpc } from 'modules/infrastructure/api/trpc/client'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { httpBatchLink } from '@trpc/client'
+import { trpc } from 'modules/infrastructure/api/trpc/client'
 import { useState } from 'react'
 
 export const Provider = ({ children }: { children: React.ReactNode }) => {
