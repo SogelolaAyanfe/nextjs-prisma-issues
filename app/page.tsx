@@ -1,5 +1,4 @@
 import BlogItems from 'components/BlogItems/BlogItems'
-import Footer from 'components/Footer/Footer'
 import Navbar from 'components/Navbar/Navbar'
 
 export default function Home() {
@@ -15,7 +14,6 @@ export default function Home() {
             }),
             title: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
             info: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean bibendum eget justo eget blandit. Fusce vitae tempor turpis. Sedscelerisque elementum eros, a porta erat auctor sit amet.',
-            link: '/blogPost',
         },
         {
             id: 2,
@@ -28,7 +26,6 @@ export default function Home() {
             }),
             title: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
             info: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean bibendum eget justo eget blandit. Fusce vitae tempor turpis. Sedscelerisque elementum eros, a porta erat auctor sit amet.',
-            link: '/blogPost',
         },
         {
             id: 3,
@@ -41,7 +38,6 @@ export default function Home() {
             }),
             title: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
             info: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean bibendum eget justo eget blandit. Fusce vitae tempor turpis. Sedscelerisque elementum eros, a porta erat auctor sit amet.',
-            link: '/blogPost',
         },
         {
             id: 4,
@@ -54,7 +50,6 @@ export default function Home() {
             }),
             title: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
             info: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean bibendum eget justo eget blandit. Fusce vitae tempor turpis. Sedscelerisque elementum eros, a porta erat auctor sit amet.',
-            link: '/blogPost',
         },
         {
             id: 5,
@@ -67,7 +62,6 @@ export default function Home() {
             }),
             title: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
             info: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean bibendum eget justo eget blandit. Fusce vitae tempor turpis. Sedscelerisque elementum eros, a porta erat auctor sit amet.',
-            link: '/blogPost',
         },
         {
             id: 6,
@@ -80,7 +74,6 @@ export default function Home() {
             }),
             title: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
             info: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean bibendum eget justo eget blandit. Fusce vitae tempor turpis. Sedscelerisque elementum eros, a porta erat auctor sit amet.',
-            link: '/blogPost',
         },
         {
             id: 7,
@@ -93,7 +86,6 @@ export default function Home() {
             }),
             title: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
             info: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean bibendum eget justo eget blandit. Fusce vitae tempor turpis. Sedscelerisque elementum eros, a porta erat auctor sit amet.',
-            link: '/blogPost',
         },
         {
             id: 8,
@@ -106,11 +98,8 @@ export default function Home() {
             }),
             title: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
             info: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean bibendum eget justo eget blandit. Fusce vitae tempor turpis. Sedscelerisque elementum eros, a porta erat auctor sit amet.',
-            link: '/blogPost',
         },
     ]
-
-    
 
     return (
         <>
@@ -120,7 +109,7 @@ export default function Home() {
                     <h1 className="text-[40px] font-bold">LATEST STORIES</h1>
                 </div>
                 <div className="grid grid-cols-3 place-items-center p-4">
-                    {blog.map(({ imgsrc, author, date, title, info, id, link }) => (
+                    {blog.map(({ imgsrc, author, date, title, info, id }) => (
                         <BlogItems
                             key={id}
                             imgsrc={imgsrc}
@@ -128,12 +117,11 @@ export default function Home() {
                             date={date}
                             title={title}
                             info={info}
-                            link={link}
+                            id={id}
                         />
                     ))}
                 </div>
             </main>
-            <Footer />
         </>
     )
 }

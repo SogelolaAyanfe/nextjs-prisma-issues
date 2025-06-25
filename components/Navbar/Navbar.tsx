@@ -2,6 +2,7 @@
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
 
+// TODO: This is not a page, it's a Navbar component.
 export default function Page() {
     // Track if mobile menu is open or closed
     const [menuOpen, setMenuOpen] = useState(false)
@@ -43,7 +44,7 @@ export default function Page() {
                                 Home
                             </span>
                         </Link>
-                        <Link href="/PostBlog">
+                        <Link href="/blog/post">
                             <span className="border-b-2 border-transparent transition duration-1000 ease-in-out hover:border-white">
                                 Post A Blog
                             </span>

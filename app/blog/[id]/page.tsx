@@ -1,6 +1,4 @@
-import BlogCard from "components/BlogCard/page"
-import OtherLayouts from "./layout"
-
+import BlogCard from 'components/BlogCard'
 
 export default function blogPost() {
     const para = () => {}
@@ -37,21 +35,19 @@ export default function blogPost() {
         },
     ]
     return (
-        <OtherLayouts>
-            <div className="pt-[90px]">
-                <div>
-                    {blog.map(({ title, date, imgsrc, author, info, id }) => (
-                        <BlogCard
-                            key={id}
-                            title={title}
-                            date={date}
-                            imgsrc={imgsrc}
-                            author={author}
-                            info={info}
-                        />
-                    ))}
-                </div>
+        <div className="pt-[90px]">
+            <div>
+                {blog.map(({ title, date, imgsrc, author, info, id }) => (
+                    <BlogCard
+                        key={id}
+                        title={title}
+                        date={date}
+                        imgsrc={imgsrc}
+                        author={author}
+                        info={info}
+                    />
+                ))}
             </div>
-        </OtherLayouts>
+        </div>
     )
 }

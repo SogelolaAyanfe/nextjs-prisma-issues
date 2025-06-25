@@ -8,7 +8,8 @@ type BlogCardProps = {
     info: string
 }
 
-export default function Page({ title, date, imgsrc, author, info }: BlogCardProps) {
+// TODO: This is not a page, it's a BlogCard component.
+export default function BlogCard({ title, date, imgsrc, author, info }: BlogCardProps) {
     return (
         <div className="flex w-full flex-col items-center gap-[10px] p-[10px] pt-[60px]">
             <div className="max-w-[800px] pb-[20px] text-center text-[35px] font-black max-sm:text-[30px]">
