@@ -13,12 +13,14 @@ export default function PostBlog() {
      const handleSubmit = async (event) => {
          event.preventDefault()
 
+        //  FIXME: why do you need this? don't let LLMs generate your code. Do the work yourself.
          const slug = title.toLowerCase().replace(/ /g, '-') + '-' + nanoid(6)
 
          createPost.mutate({
              title,
              description,
              content,
+             // NOTE: Why is this a placeholder? what is the purpose of it? Also, do you know you can't upload images via trpc?
              img: img || '/placeholder.jpg', 
          })
      }
@@ -44,6 +46,7 @@ export default function PostBlog() {
                             name="image"
                             accept="image/*"
                             className="hidden"
+                            // NOTE: learn about image uploads. this is weird
                             onChange={e => {
                                 setImg('/BlogPostsImg/injury.jpeg')
                             }}

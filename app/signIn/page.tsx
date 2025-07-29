@@ -35,6 +35,7 @@ export default function signInPage() {
                                 >
                                     Forgot Password?
                                 </Link>
+                                {/* TASK: are you sure it works? */}
                                 <button type='button' onClick={() => signIn('github')} className="w-1/2 bg-black pt-[10px] pb-[10px] text-white hover:bg-neutral-800">
                                     Sign In
                                 </button>

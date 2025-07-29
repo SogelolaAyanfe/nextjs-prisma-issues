@@ -6,22 +6,10 @@ import BlogCard from 'components/BlogCard'
 import { useParams } from 'next/navigation'
 
 export default function blogPost() {
-    const { id } = useParams()
-    let postId = ''
+    // NOTE: take a look at this
+    const { id } = useParams<{ id: string }>()
 
-    if (typeof id === 'string') {
-        postId = id
-    } else if (Array.isArray(id)) {
-        postId = id[0]
-    } else {
-        postId = ''
-    }
-
-    const {
-        data: post,
-        isLoading,
-        error,
-    } = trpc.users.getPostsById.useQuery({ id: postId })
+    const { data: post, isLoading, error } = trpc.users.getPostsById.useQuery({ id })
 
     if (isLoading) return <p>Loading...</p>
     if (error || !post) return <p>Blog post not found.</p>

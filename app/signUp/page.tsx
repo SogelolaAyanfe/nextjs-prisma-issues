@@ -34,6 +34,8 @@ export default function signUp() {
                                     placeholder="Confirm password"
                                     className="w-1/2 border-b-[1px] border-white bg-transparent pt-[10px] pb-[10px] placeholder-white max-sm:w-[75%]"
                                 />
+                                {/* TASK: I think next auth has a sign up functionality inbuilt in signIn method. It creates a new user and session in the database if it doesn't exist. */}
+                                {/* You might just drop the page. Double check. */}
                                 <button className="w-1/2 bg-black pt-[10px] pb-[10px] text-white hover:bg-neutral-800 max-sm:w-[75%]">
                                     Sign Up
                                 </button>
