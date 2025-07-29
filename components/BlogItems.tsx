@@ -3,19 +3,19 @@ import Link from 'next/link'
 
 type BlogItemProps = {
     imgsrc: string | StaticImageData
-    author: string
-    date?: string
+    createdAt?: string
+    authorName: string
     title?: string
-    info: string
-    id: number
+    description: string
+    id: string
 }
 
 export default function BlogItems({
     imgsrc,
-    author,
-    date,
+    createdAt,
+    authorName,
     title,
-    info,
+    description,
     id,
 }: BlogItemProps) {
     return (
@@ -31,12 +31,12 @@ export default function BlogItems({
                 </Link>
             </div>
             <div className="flex flex-row gap-[10px] text-[17px]">
-                <p>{author}</p>
-                <p>{date}</p>
+                <p>{authorName}</p>
+                <p>{createdAt}</p>
             </div>
             <p className="text-black-900 max-w-[500px] text-[25px]">{title}</p>
             <div className="max-w-[500px] flex-row pb-[20px]">
-                <p>{info}</p>
+                <p>{description}</p>
                 <Link
                     href={`/blog/${id}`}
                     className="cursor-pointer text-blue-600 hover:underline"

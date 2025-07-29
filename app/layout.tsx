@@ -1,7 +1,7 @@
-import { Footer } from 'components/Footer/Footer'
-import { Provider } from 'components/Provider'
 import type { Metadata } from 'next'
 import 'styles/global.css'
+import { Footer } from '../components/Footer'
+import { Provider } from '../components/Provider'
 
 export const metadata: Metadata = {
     title: 'Create Next App',
@@ -23,7 +23,8 @@ export default function RootLayout({
                 <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
             </head>
             <body>
-                <Provider>{children}</Provider> <Footer />
+                <Provider>{children}</Provider>
+                <Footer />
             </body>
         </html>
     )
