@@ -3,7 +3,7 @@ import Navbar from 'components/Navbar'
 import { signOut } from 'next-auth/react'
 import Image from 'next/image'
 
-export default function signUp() {
+export default function logOut() {
     return (
         <>
             <Navbar />
