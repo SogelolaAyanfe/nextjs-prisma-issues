@@ -1,13 +1,15 @@
 'use client'
+import { useSession } from 'next-auth/react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { useState, useEffect } from 'react'
+import { useEffect, useState } from 'react'
 
 export default function Navbar() {
     const [menuOpen, setMenuOpen] = useState(false)
     const pathname = usePathname()
     const [color, setColor] = useState(false)
     const [home, setHome] = useState('/')
+    const { data: session, status } = useSession()
 
     useEffect(() => {
         setHome(pathname)
@@ -44,21 +46,29 @@ export default function Navbar() {
                             Home
                         </span>
                     </Link>
-                    <Link href="/blog/post">
-                        <span className="border-b-2 border-transparent transition duration-1000 ease-in-out hover:border-white">
-                            Post A Blog
-                        </span>
-                    </Link>
-                    <Link href="/signUp">
-                        <span className="border-b-2 border-transparent transition duration-1000 ease-in-out hover:border-white">
-                            Sign Out
-                        </span>
-                    </Link>
-                    <Link href="/signIn">
-                        <span className="border-b-2 border-transparent transition duration-1000 ease-in-out hover:border-white">
-                            Sign in
-                        </span>
-                    </Link>
+
+                    {status === 'authenticated' ? (
+                        <div className="flex items-center gap-[30px]">
+                            <Link href="/logOut">
+                                <span className="border-b-2 border-transparent transition duration-1000 ease-in-out hover:border-white">
+                                    Log Out
+                                </span>
+                            </Link>
+                            <Link href="/blog/post">
+                                <span className="border-b-2 border-transparent transition duration-1000 ease-in-out hover:border-white">
+                                    Post A Blog
+                                </span>
+                            </Link>
+                        </div>
+                    ) : (
+                        <div>
+                            <Link href="/signIn">
+                                <span className="border-b-2 border-transparent transition duration-1000 ease-in-out hover:border-white">
+                                    Sign in
+                                </span>
+                            </Link>
+                        </div>
+                    )}
                 </div>
 
                 {/* Mobile hamburger button - only shows on mobile */}
