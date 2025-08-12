@@ -22,7 +22,7 @@ export const usersRouter = router({
             z.object({
                 title: z.string(),
                 content: z.string(),
-                img: z.string(),
+                img: z.string().url(),
                 description: z.string(),
                 slug: z.string(),
             }),
@@ -39,27 +39,6 @@ export const usersRouter = router({
                 },
             })
         }),
-    getPosts: publicProcedure.query(async () => {
-        return prisma.post.findMany({
-            orderBy: { createdAt: 'desc' },
-            include: { User: true },
-        })
-    }),
-    getPostsById: publicProcedure
-        .input(z.object({ id: z.string() }))
-        .query(async ({ input }) => {
-            return prisma.post.findUnique({
-                where: { id: input.id },
-                include: {
-                    User: true,
-                },
-            })
-        }),
-    getPostBySlug: publicProcedure
-        .input(z.object({ slug: z.string() }))
-        .query(async ({ input }) => {
-            return prisma.post.findUnique({
-                where: { slug: input.slug },
-            })
-        }),
+   
+
 })

@@ -1,4 +1,6 @@
+'use client'
 import Navbar from 'components/Navbar'
+import { signOut } from 'next-auth/react'
 import Image from 'next/image'
 
 export default function signUp() {
@@ -14,7 +16,7 @@ export default function signUp() {
                         <p className="justify-center text-center text-white">{`Let's get you started`}</p>
                         <div>
                             <form className="flex flex-col items-center justify-center gap-[30px] text-white">
-                                <input
+                                {/* <input
                                     type="text"
                                     placeholder="Name"
                                     className="w-1/2 border-b-[1px] border-white bg-transparent pt-[10px] pb-[10px] placeholder-white max-sm:w-[75%]"
@@ -33,11 +35,13 @@ export default function signUp() {
                                     type="password"
                                     placeholder="Confirm password"
                                     className="w-1/2 border-b-[1px] border-white bg-transparent pt-[10px] pb-[10px] placeholder-white max-sm:w-[75%]"
-                                />
-                                {/* TASK: I think next auth has a sign up functionality inbuilt in signIn method. It creates a new user and session in the database if it doesn't exist. */}
-                                {/* You might just drop the page. Double check. */}
-                                <button className="w-1/2 bg-black pt-[10px] pb-[10px] text-white hover:bg-neutral-800 max-sm:w-[75%]">
-                                    Sign Up
+                                /> */}
+
+                                <button
+                                    onClick={() => signOut()}
+                                    className="w-1/2 bg-black pt-[10px] pb-[10px] text-white hover:bg-neutral-800 max-sm:w-[75%]"
+                                >
+                                    Sign out
                                 </button>
                             </form>
                         </div>

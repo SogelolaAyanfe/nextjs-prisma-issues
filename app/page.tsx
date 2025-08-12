@@ -1,6 +1,8 @@
+"use client"
 import { trpc } from '@/modules/infrastructure/api/trpc/client'
 import BlogItems from '../components/BlogItems'
 import Navbar from '../components/Navbar'
+
 
 export default function Home() {
     // const blog = [
@@ -101,10 +103,10 @@ export default function Home() {
     //         info: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean bibendum eget justo eget blandit. Fusce vitae tempor turpis. Sedscelerisque elementum eros, a porta erat auctor sit amet.',
     //     },
     // ]
-    const { data: blogPosts, isLoading, isError, error } = trpc.users.getPosts.useQuery()
+    const { data: blogPosts, isLoading, isError, error } = trpc.posts.getPosts.useQuery()
 
-    if (isLoading) return <p>Loading...</p>
-    if (isError) return <p>Error: {error.message}</p>
+    // if (isLoading) return <p>Loading...</p>
+    // if (isError) return <p>Error: {error.message}</p>
     return (
         <>
             <header
@@ -115,7 +117,7 @@ export default function Home() {
                 }}
             ></header>
             <Navbar />
-            <main>
+            <main> 
                 <div className="flex justify-center pt-[30px] pb-[30px]">
                     <h1 className="text-[40px] font-bold">LATEST STORIES</h1>
                 </div>

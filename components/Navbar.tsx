@@ -51,12 +51,12 @@ export default function Navbar() {
                     </Link>
                     <Link href="/signUp">
                         <span className="border-b-2 border-transparent transition duration-1000 ease-in-out hover:border-white">
-                            Sign Up
+                            Sign Out
                         </span>
                     </Link>
                     <Link href="/signIn">
                         <span className="border-b-2 border-transparent transition duration-1000 ease-in-out hover:border-white">
-                            Log in
+                            Sign in
                         </span>
                     </Link>
                 </div>

@@ -1,8 +1,7 @@
 'use client'
 import Navbar from 'components/Navbar'
+import { signIn } from 'next-auth/react'
 import Image from 'next/image'
-import Link from 'next/link'
-import { signIn} from 'auth'
 
 export default function signInPage() {
     return (
@@ -14,12 +13,12 @@ export default function signInPage() {
                 <div className="max-sm:pb-[100 px] flex h-full w-1/2 flex-col gap-[170px] max-sm:w-full">
                     <div className="flex flex-col gap-[20px] pt-[25%]">
                         <h1 className="font-900 justify-center text-center text-[27px] text-white">
-                            Welcome back to Blogged.
+                            Welcome to Blogged.
                         </h1>
                         <p className="justify-center text-center text-white">{`Keep exploring the wildest fantasies of our writers`}</p>
                         <div>
                             <form className="flex flex-col items-center justify-center gap-[30px] text-white">
-                                <input
+                                {/* <input
                                     type="text"
                                     placeholder="Email"
                                     className="w-1/2 border-b-[1px] border-white bg-transparent pt-[10px] pb-[10px] placeholder-white max-sm:w-[75%]"
@@ -31,13 +30,24 @@ export default function signInPage() {
                                 />
                                 <Link
                                     href="/login"
-                                    className="flex text-white hover:underline"
+                                    className="flex text-white hover:underline"j
                                 >
                                     Forgot Password?
-                                </Link>
+                                </Link> */}
                                 {/* TASK: are you sure it works? */}
-                                <button type='button' onClick={() => signIn('github')} className="w-1/2 bg-black pt-[10px] pb-[10px] text-white hover:bg-neutral-800">
-                                    Sign In
+                                <button
+                                    type="button"
+                                    onClick={() => signIn('google')}
+                                    className="w-1/2 bg-black pt-[10px] pb-[10px] text-white hover:bg-neutral-800"
+                                >
+                                    Sign in with Google
+                                </button>
+                                <button
+                                    type="button"
+                                    className="w-1/2 bg-black pt-[10px] pb-[10px] text-white hover:bg-neutral-800"
+                                    onClick={() => signIn('github')}
+                                >
+                                    Sign in with GitHub
                                 </button>
                             </form>
                         </div>
