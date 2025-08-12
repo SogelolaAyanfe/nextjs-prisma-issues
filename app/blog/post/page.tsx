@@ -1,29 +1,35 @@
-"use client"
-import { trpc } from "@/modules/infrastructure/api/trpc/client"
-import { useState } from "react"
-import { nanoid } from "nanoid"
+'use client'
+import { trpc } from '@/modules/infrastructure/api/trpc/client'
+import { CldUploadButton, CloudinaryUploadWidgetResults } from 'next-cloudinary'
+import Image from 'next/image'
+import { useState } from 'react'
 export default function PostBlog() {
-     const [title, setTitle] = useState('')
-     const [description, setDescription] = useState('')
-     const [content, setContent] = useState('')
-     const [img, setImg] = useState('') 
+    const [title, setTitle] = useState('')
+    const [description, setDescription] = useState('')
+    const [content, setContent] = useState('')
+    const [imageUrl, setImageUrl] = useState('')
+    const [publicId, setPublicId] = useState('')
 
-     const createPost = trpc.users.createPost.useMutation()
+    const createPost = trpc.users.createPost.useMutation()
 
-     const handleSubmit = async (event) => {
-         event.preventDefault()
+    const handleSubmit = async event => {
+        event.preventDefault()
+        createPost.mutate({
+            title,
+            description,
+            content,
+        })
+    }
 
-        //  FIXME: why do you need this? don't let LLMs generate your code. Do the work yourself.
-         const slug = title.toLowerCase().replace(/ /g, '-') + '-' + nanoid(6)
-
-         createPost.mutate({
-             title,
-             description,
-             content,
-             // NOTE: Why is this a placeholder? what is the purpose of it? Also, do you know you can't upload images via trpc?
-             img: img || '/placeholder.jpg', 
-         })
-     }
+    const handleImageUpload = (result: CloudinaryUploadWidgetResults) => {
+        const info = result.info as object
+        if ('public_id' in info && 'secure_url' in info) {
+            const url = info.secure_url as string
+            const publicId = info.public_id as string
+            setImageUrl(url)
+            setPublicId(publicId)
+        }
+    }
 
     return (
         <div className="flex w-full flex-col items-center gap-[30px] p-9 pt-[90px]">
@@ -34,29 +40,28 @@ export default function PostBlog() {
                         <h1 className="text-[20px] font-medium">
                             Add an image for your blog
                         </h1>
-                        <label
-                            htmlFor="imageUpload"
-                            className="h-[300px] w-[300px] items-center rounded bg-neutral-700 px-4 py-2 pt-[50px] text-center text-[100px] font-semibold text-white hover:bg-neutral-800"
+
+                        <CldUploadButton
+                            uploadPreset="imgupload"
+                            onSuccess={handleImageUpload}
+                            className={`relative h-[300px] w-[300px] items-center rounded-md border-[2px] px-4 py-2 text-center text-[100px] font-semibold text-black ${imageUrl && 'pointer-events-none'}`}
                         >
-                            +
-                        </label>
-                        <input
-                            type="file"
-                            id="imageUpload"
-                            name="image"
-                            accept="image/*"
-                            className="hidden"
-                            // NOTE: learn about image uploads. this is weird
-                            onChange={e => {
-                                setImg('/BlogPostsImg/injury.jpeg')
-                            }}
-                        />
+                            <div>+</div>
+                            {imageUrl && (
+                                <Image
+                                    src={imageUrl}
+                                    fill
+                                    alt={title}
+                                    className="absolute inset-0 object-cover"
+                                />
+                            )}
+                        </CldUploadButton>
                     </div>
                     <div className="flex max-w-[700px] min-w-[400px] flex-col gap-[20px] pt-[40px]">
                         <input
                             type="text"
                             placeholder="Title"
-                            className="] h-[45px] max-w-[600px] min-w-[400px] rounded-md border-[2px] border-black pl-[5px] placeholder-black"
+                            className="h-[45px] max-w-[600px] min-w-[400px] rounded-md border-[2px] border-black pl-[5px] placeholder-black"
                             onChange={e => setTitle(e.target.value)}
                         />
                         <input
@@ -70,7 +75,11 @@ export default function PostBlog() {
                             className="h-[300px] max-w-[600px] min-w-[400px] rounded-md border-[2px] border-black pl-[5px] placeholder-black"
                             onChange={e => setContent(e.target.value)}
                         ></textarea>
-                        <button className="h-[30px] max-w-[100px] rounded-md bg-black text-white hover:bg-neutral-800">
+                        <button
+                            onSubmit={handleSubmit}
+                            type="submit"
+                            className="h-[30px] max-w-[100px] rounded-md bg-black text-white hover:bg-neutral-800"
+                        >
                             Send
                         </button>
                     </div>
