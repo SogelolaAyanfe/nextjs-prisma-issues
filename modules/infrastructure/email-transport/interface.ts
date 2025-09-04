@@ -1,8 +1,8 @@
-import { Effect, Context } from 'effect'
-import { SendMailOptions } from 'nodemailer'
+// import { Effect, Context } from 'effect'
+// import { SendMailOptions } from 'nodemailer'
 
-export type EmailTransport = {
-    sendMail: (args: SendMailOptions) => Effect.Effect<void>
-}
+// export type EmailTransport = {
+//     sendMail: (args: SendMailOptions) => Effect.Effect<void>
+// }
 
-export const EmailTransport = Context.GenericTag<EmailTransport>('email-transport')
+// export const EmailTransport = Context.GenericTag<EmailTransport>('email-transport')
