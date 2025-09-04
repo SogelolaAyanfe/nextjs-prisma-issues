@@ -16,7 +16,7 @@ export default function TiptapEditor({ content, onChange }: TiptapEditorProps) {
         content,
         immediatelyRender: false,
         onUpdate: ({ editor }) => {
-            onChange(editor.getHTML()) // Save HTML as string
+            onChange(editor.getHTML())
         },
     })
 

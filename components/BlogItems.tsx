@@ -23,7 +23,7 @@ export default function BlogItems({
 }: BlogItemProps) {
     const { data: session, status } = useSession()
     const utils = trpc.useUtils()
-    const { data: post, isLoading, error } = trpc.posts.getPostsById.useQuery({ id })
+    const { data: post} = trpc.posts.getPostsById.useQuery({ id })
     const canDelete = post?.userEmail === session?.user?.email
     const [showDeleteModal, setShowDeleteModal] = useState(false)
 

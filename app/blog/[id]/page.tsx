@@ -6,10 +6,8 @@ import { useParams } from 'next/navigation'
 export default function blogPost() {
     const { id } = useParams<{ id: string }>()
 
-    const { data: post, isLoading, error } = trpc.posts.getPostsById.useQuery({ id })
+    const { data: post} = trpc.posts.getPostsById.useQuery({ id })
 
-    if (isLoading) return <p>Loading...</p>
-    if (error || !post) return <p>Blog post not found.</p>
 
     return (
         <div className="pt-[90px]">

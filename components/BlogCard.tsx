@@ -14,7 +14,7 @@ type BlogCardProps = {
 
 export default function BlogCard({ title, date, img, author, info, id }: BlogCardProps) {
     const { data: session } = useSession()
-    const { data: post, isLoading, error } = trpc.posts.getPostsById.useQuery({ id })
+    const { data: post } = trpc.posts.getPostsById.useQuery({ id })
     const canEdit = post.userEmail === session?.user?.email
 
     return (
@@ -76,7 +76,7 @@ export default function BlogCard({ title, date, img, author, info, id }: BlogCar
 
                 <div
                     className="prose pb-[50px]"
-                    dangerouslySetInnerHTML={{ __html: info }} // 👈 render Tiptap HTML
+                    dangerouslySetInnerHTML={{ __html: info }} 
                 />
             </div>
         </div>

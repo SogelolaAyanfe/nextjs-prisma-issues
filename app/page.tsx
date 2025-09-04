@@ -7,7 +7,7 @@ import Navbar from '../components/Navbar'
 import { useSession } from 'next-auth/react'
 
 export default function Home() {
-    const { data: blogPosts, isLoading, isError, error } = trpc.posts.getPosts.useQuery()
+    const { data: blogPosts} = trpc.posts.getPosts.useQuery()
     const [hover, setHover] = useState(false)
     const mouseEnter = () => {
         setHover(true)

@@ -24,7 +24,7 @@ export default function EditTiptap({ content, onChange, id }: EditTiptapProps) {
         content: post?.content ?? '',
         immediatelyRender: false,
         onUpdate: ({ editor }) => {
-            onChange(editor.getHTML()) // Save HTML as string
+            onChange(editor.getHTML()) 
         },
     })
 

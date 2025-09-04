@@ -9,7 +9,7 @@ export default function EditPostPage() {
     const { id } = useParams<{ id: string }>()
     const router = useRouter()
 
-    const { data: post, isLoading } = trpc.posts.getPostsById.useQuery(
+    const { data: post} = trpc.posts.getPostsById.useQuery(
         {
             id,
         },
