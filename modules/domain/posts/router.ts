@@ -1,5 +1,5 @@
-import { auth } from '@/auth'
-import cloudinary from '@/lib/cloudinary'
+import { auth } from 'auth'
+import cloudinary from 'lib/cloudinary'
 import { publicProcedure, router } from 'modules/infrastructure/api/trpc/server'
 import { prisma } from 'modules/infrastructure/database/prisma-client/layers/prisma'
 import { z } from 'zod'

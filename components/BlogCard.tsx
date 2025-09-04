@@ -1,4 +1,4 @@
-import { trpc } from '@/modules/infrastructure/api/trpc/client'
+import { trpc } from 'modules/infrastructure/api/trpc/client'
 import { useSession } from 'next-auth/react'
 import Image, { StaticImageData } from 'next/image'
 import Link from 'next/link'

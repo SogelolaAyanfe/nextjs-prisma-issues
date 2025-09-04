@@ -4,7 +4,7 @@ import { signIn } from 'next-auth/react'
 import Image from 'next/image'
 import { useRouter } from 'next/navigation'
 
-export default function signInPage() {
+export default function SignInPage() {
     const router = useRouter()
     return (
         <>
@@ -24,13 +24,13 @@ export default function signInPage() {
                                 <button
                                     type="button"
                                     onClick={() => signIn('google', { callbackUrl: '/' })}
-                                    className="w-[300px] rounded-md bg-black pt-[10px] pb-[10px] hover:bg-neutral-800  max-sm:w-full max-sm:py-3"
+                                    className="w-[300px] rounded-md bg-black pt-[10px] pb-[10px] hover:bg-neutral-800 max-sm:w-full max-sm:py-3"
                                 >
                                     Sign in with Google
                                 </button>
                                 <button
                                     type="button"
-                                    className="w-[300px] rounded-md bg-black pt-[10px] pb-[10px] hover:bg-neutral-800 w- max-sm:w-full max-sm:py-3"
+                                    className="w- w-[300px] rounded-md bg-black pt-[10px] pb-[10px] hover:bg-neutral-800 max-sm:w-full max-sm:py-3"
                                     onClick={() => signIn('github', { callbackUrl: '/' })}
                                 >
                                     Sign in with GitHub

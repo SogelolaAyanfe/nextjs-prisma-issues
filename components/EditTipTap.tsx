@@ -1,8 +1,8 @@
 'use client'
 
-import { trpc } from '@/modules/infrastructure/api/trpc/client'
 import { EditorContent, useEditor } from '@tiptap/react'
 import StarterKit from '@tiptap/starter-kit'
+import { trpc } from 'modules/infrastructure/api/trpc/client'
 import { useEffect } from 'react'
 import { FaBold, FaHeading, FaItalic, FaListUl } from 'react-icons/fa'
 
@@ -12,19 +12,14 @@ type EditTiptapProps = {
     id: string
 }
 
-export default function EditTiptap({ content, onChange, id }: EditTiptapProps) {
-    const {
-        data: post,
-        isLoading,
-        isError,
-        error,
-    } = trpc.posts.getPostsById.useQuery({ id })
+export default function EditTiptap({ onChange, id }: EditTiptapProps) {
+    const { data: post } = trpc.posts.getPostsById.useQuery({ id })
     const editor = useEditor({
         extensions: [StarterKit],
         content: post?.content ?? '',
         immediatelyRender: false,
         onUpdate: ({ editor }) => {
-            onChange(editor.getHTML()) 
+            onChange(editor.getHTML())
         },
     })
 

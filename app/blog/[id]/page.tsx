@@ -1,13 +1,12 @@
 'use client'
-import { trpc } from '@/modules/infrastructure/api/trpc/client'
 import BlogCard from 'components/BlogCard'
+import { trpc } from 'modules/infrastructure/api/trpc/client'
 import { useParams } from 'next/navigation'
 
-export default function blogPost() {
+export default function BlogPost() {
     const { id } = useParams<{ id: string }>()
 
-    const { data: post} = trpc.posts.getPostsById.useQuery({ id })
-
+    const { data: post } = trpc.posts.getPostsById.useQuery({ id })
 
     return (
         <div className="pt-[90px]">
@@ -25,6 +24,5 @@ export default function blogPost() {
                 info={post.content}
             />
         </div>
-        
     )
 }

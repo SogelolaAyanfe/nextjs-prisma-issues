@@ -1,7 +1,7 @@
 'use client'
 
-import { trpc } from '@/modules/infrastructure/api/trpc/client'
 import TipTap from 'components/TiipTap'
+import { trpc } from 'modules/infrastructure/api/trpc/client'
 import { CldUploadButton, CloudinaryUploadWidgetResults } from 'next-cloudinary'
 import Image from 'next/image'
 import { useRouter } from 'next/navigation'
@@ -19,7 +19,7 @@ export default function PostBlog() {
 
     const createPost = trpc.users.createPost.useMutation({
         onSuccess: () => {
-            utils.posts.getPosts.invalidate(), router.push('/')
+            ;(utils.posts.getPosts.invalidate(), router.push('/'))
         },
         onError: err => {
             console.error('❌ Error creating post:', err)
@@ -35,7 +35,6 @@ export default function PostBlog() {
             img: imageUrl,
             publicId: publicId,
         })
-       
     }
 
     const handleImageUpload = (result: CloudinaryUploadWidgetResults) => {

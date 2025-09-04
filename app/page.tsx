@@ -1,13 +1,13 @@
 'use client'
-import { trpc } from '@/modules/infrastructure/api/trpc/client'
+import { trpc } from 'modules/infrastructure/api/trpc/client'
+import { useSession } from 'next-auth/react'
 import Link from 'next/link'
 import { useState } from 'react'
 import BlogItems from '../components/BlogItems'
 import Navbar from '../components/Navbar'
-import { useSession } from 'next-auth/react'
 
 export default function Home() {
-    const { data: blogPosts} = trpc.posts.getPosts.useQuery()
+    const { data: blogPosts } = trpc.posts.getPosts.useQuery()
     const [hover, setHover] = useState(false)
     const mouseEnter = () => {
         setHover(true)
@@ -15,9 +15,8 @@ export default function Home() {
     const mouseLeave = () => {
         setHover(false)
     }
-    const {data: session, status} = useSession()
+    const { data: session, status } = useSession()
     const canSeeHover = status === 'authenticated'
-    
 
     return (
         <>
@@ -48,32 +47,33 @@ export default function Home() {
                 </div>
             </main>
             {canSeeHover && (
-            <div className="fixed right-[10px] bottom-5 hidden max-sm:block">
-                <Link
-                    href="/blog/post"
-                    onMouseEnter={mouseEnter}
-                    onMouseLeave={mouseLeave}
-                >
-                    {hover && (
-                        <p className="w-[50px] rounded-xl bg-green-600 pl-[8px] text-[13px] text-white transition duration-1000 ease-in-out">
-                            Write
-                        </p>
-                    )}
-                    <svg
-                        className="h-[50px] w-[50px]"
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="200"
-                        height="200"
-                        viewBox="0 0 48 48"
+                <div className="fixed right-[10px] bottom-5 hidden max-sm:block">
+                    <Link
+                        href="/blog/post"
+                        onMouseEnter={mouseEnter}
+                        onMouseLeave={mouseLeave}
                     >
-                        <circle cx="24" cy="24" r="21" fill="#4CAF50" />
-                        <g fill="#fff">
-                            <path d="M21 14h6v20h-6z" />
-                            <path d="M14 21h20v6H14z" />
-                        </g>
-                    </svg>
-                </Link>
-            </div>)}
+                        {hover && (
+                            <p className="w-[50px] rounded-xl bg-green-600 pl-[8px] text-[13px] text-white transition duration-1000 ease-in-out">
+                                Write
+                            </p>
+                        )}
+                        <svg
+                            className="h-[50px] w-[50px]"
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="200"
+                            height="200"
+                            viewBox="0 0 48 48"
+                        >
+                            <circle cx="24" cy="24" r="21" fill="#4CAF50" />
+                            <g fill="#fff">
+                                <path d="M21 14h6v20h-6z" />
+                                <path d="M14 21h20v6H14z" />
+                            </g>
+                        </svg>
+                    </Link>
+                </div>
+            )}
             <div className="absolute top-[280px] flex flex-col gap-0 text-white">
                 <h1 className="border-white p-2 text-[25px] sm:text-[40px]">
                     The Dive: Explore every
