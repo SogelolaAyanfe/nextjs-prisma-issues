@@ -19,4 +19,8 @@ export const authOptions: NextAuthConfig = {
         signOut: '/',
         error: '/',
     },
+    session: {
+        strategy: 'jwt',
+        maxAge: 60 * 45,
+    },
 }

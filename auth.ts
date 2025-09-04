@@ -1,7 +1,7 @@
-import NextAuth from 'next-auth'
-import { authOptions } from 'modules/infrastructure/auth-manager/next-auth'
 import { PrismaAdapter } from '@auth/prisma-adapter'
+import { authOptions } from 'modules/infrastructure/auth-manager/next-auth'
 import { getPrisma } from 'modules/infrastructure/database/prisma-client'
+import NextAuth from 'next-auth'
 
 const prisma = getPrisma()
 

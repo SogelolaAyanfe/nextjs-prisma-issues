@@ -2,50 +2,36 @@
 import Navbar from 'components/Navbar'
 import { signIn } from 'next-auth/react'
 import Image from 'next/image'
+import { useRouter } from 'next/navigation'
 
 export default function signInPage() {
+    const router = useRouter()
     return (
         <>
             <Navbar />
 
-            <div className="flex justify-between bg-stone-400 pt-[90px] pb-[50px] max-sm:flex-col-reverse">
-                <Navbar />
-                <div className="max-sm:pb-[100 px] flex h-full w-1/2 flex-col gap-[170px] max-sm:w-full">
-                    <div className="flex flex-col gap-[20px] pt-[25%]">
-                        <h1 className="font-900 justify-center text-center text-[27px] text-white">
+            <div className="flex min-h-screen justify-between pt-[200px] pb-[50px] max-lg:flex-col-reverse max-lg:gap-8 max-lg:pt-[150px] max-md:pt-[150px] max-sm:pt-[150px]">
+                <div className="flex h-full w-1/2 flex-col justify-center max-lg:w-full max-lg:pb-8">
+                    <div className="flex flex-col gap-[40px] px-8 max-sm:px-4">
+                        <h1 className="font-900 justify-center pt-[100px] text-center text-[27px] text-black max-lg:pt-[30px] max-md:pt-[30px] max-sm:pt-[30px] max-sm:text-[24px]">
                             Welcome to Blogged.
                         </h1>
-                        <p className="justify-center text-center text-white">{`Keep exploring the wildest fantasies of our writers`}</p>
+                        <p className="justify-center text-center text-black max-sm:text-sm">
+                            {`Keep exploring the creativeness of our writers`}
+                        </p>
                         <div>
-                            <form className="flex flex-col items-center justify-center gap-[30px] text-white">
-                                {/* <input
-                                    type="text"
-                                    placeholder="Email"
-                                    className="w-1/2 border-b-[1px] border-white bg-transparent pt-[10px] pb-[10px] placeholder-white max-sm:w-[75%]"
-                                />
-                                <input
-                                    type="password"
-                                    placeholder="Password"
-                                    className="w-1/2 border-b-[1px] border-white bg-transparent pt-[10px] pb-[10px] placeholder-white max-sm:w-[75%]"
-                                />
-                                <Link
-                                    href="/login"
-                                    className="flex text-white hover:underline"j
-                                >
-                                    Forgot Password?
-                                </Link> */}
-                                {/* TASK: are you sure it works? */}
+                            <form className="flex flex-col items-center justify-center gap-[40px] text-white max-sm:gap-6">
                                 <button
                                     type="button"
-                                    onClick={() => signIn('google')}
-                                    className="w-1/2 bg-black pt-[10px] pb-[10px] text-white hover:bg-neutral-800"
+                                    onClick={() => signIn('google', { callbackUrl: '/' })}
+                                    className="w-[300px] rounded-md bg-black pt-[10px] pb-[10px] hover:bg-neutral-800  max-sm:w-full max-sm:py-3"
                                 >
                                     Sign in with Google
                                 </button>
                                 <button
                                     type="button"
-                                    className="w-1/2 bg-black pt-[10px] pb-[10px] text-white hover:bg-neutral-800"
-                                    onClick={() => signIn('github')}
+                                    className="w-[300px] rounded-md bg-black pt-[10px] pb-[10px] hover:bg-neutral-800 w- max-sm:w-full max-sm:py-3"
+                                    onClick={() => signIn('github', { callbackUrl: '/' })}
                                 >
                                     Sign in with GitHub
                                 </button>
@@ -53,14 +39,18 @@ export default function signInPage() {
                         </div>
                     </div>
                 </div>
-                <div className="flex h-screen w-1/2 content-center items-center justify-center max-sm:h-1/2 max-sm:w-full">
-                    <Image
-                        src="/signUp.jpeg"
-                        alt="Sign Up Image"
-                        width={500}
-                        height={500}
-                        className="rounded-xl border-[5px] border-white max-sm:h-[400px] max-sm:w-full max-sm:rounded-none max-sm:border-none sm:h-[90%] sm:w-[90%] md:h-[90%] md:w-[90%] lg:h-[90%] lg:w-[90%] xl:h-[90%]"
-                    />
+
+                <div className="flex w-1/2 items-center justify-center px-8 max-lg:h-[50vh] max-lg:w-full max-sm:h-[40vh] max-sm:px-4">
+                    <div className="relative h-full max-h-[600px] w-full max-w-[500px]">
+                        <Image
+                            src="/signUp.jpg"
+                            alt="Sign Up Image"
+                            fill
+                            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 100vw, 50vw"
+                            className="rounded-xl border border-gray-200 object-cover max-lg:rounded-lg max-md:rounded-md max-sm:rounded-sm max-sm:border-none"
+                            priority
+                        />
+                    </div>
                 </div>
             </div>
         </>

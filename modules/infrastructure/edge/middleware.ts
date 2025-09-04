@@ -1,1 +1,1 @@
-export { auth as middleware } from '@/auth'
+export async function middleware() {}

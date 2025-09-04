@@ -14,6 +14,7 @@ const createPrisma = () => {
 
 export type Prisma = ReturnType<typeof createPrisma>
 export const Prisma = Context.GenericTag<Prisma>('prisma')
+export const prisma = new PrismaClient()
 
 export const PrismaLayer = Layer.effect(
     Prisma,

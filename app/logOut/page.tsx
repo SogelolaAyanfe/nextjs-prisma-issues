@@ -16,32 +16,12 @@ export default function logOut() {
                         <p className="justify-center text-center text-white">{`Let's get you started`}</p>
                         <div>
                             <form className="flex flex-col items-center justify-center gap-[30px] text-white">
-                                {/* <input
-                                    type="text"
-                                    placeholder="Name"
-                                    className="w-1/2 border-b-[1px] border-white bg-transparent pt-[10px] pb-[10px] placeholder-white max-sm:w-[75%]"
-                                />
-                                <input
-                                    type="text"
-                                    placeholder="Email"
-                                    className="w-1/2 border-b-[1px] border-white bg-transparent pt-[10px] pb-[10px] placeholder-white max-sm:w-[75%]"
-                                />
-                                <input
-                                    type="password"
-                                    placeholder="Password"
-                                    className="w-1/2 border-b-[1px] border-white bg-transparent pt-[10px] pb-[10px] placeholder-white max-sm:w-[75%]"
-                                />
-                                <input
-                                    type="password"
-                                    placeholder="Confirm password"
-                                    className="w-1/2 border-b-[1px] border-white bg-transparent pt-[10px] pb-[10px] placeholder-white max-sm:w-[75%]"
-                                /> */}
 
                                 <button
-                                    onClick={() => signOut()}
+                                    onClick={() => signOut({callbackUrl: '/'})}
                                     className="w-1/2 bg-black pt-[10px] pb-[10px] text-white hover:bg-neutral-800 max-sm:w-[75%]"
                                 >
-                                    Sign out
+                                    Log out
                                 </button>
                             </form>
                         </div>

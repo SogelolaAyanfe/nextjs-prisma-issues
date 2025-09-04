@@ -1,5 +1,6 @@
-import { prisma, publicProcedure, router } from 'modules/infrastructure/api/trpc/server'
-
+import { auth } from '@/auth'
+import { publicProcedure, router } from 'modules/infrastructure/api/trpc/server'
+import { prisma } from 'modules/infrastructure/database/prisma-client/layers/prisma'
 import { z } from 'zod'
 
 export const usersRouter = router({
@@ -20,25 +21,26 @@ export const usersRouter = router({
     createPost: publicProcedure
         .input(
             z.object({
-                title: z.string(),
-                content: z.string(),
-                img: z.string().url(),
-                description: z.string(),
-                slug: z.string(),
+                title: z.string().min(1, 'Title is required'),
+                content: z.string().min(1, 'Content is required'),
+                img: z.string().url('Please provide a valid image URL'),
+                description: z.string().min(1, 'Description is required'),
+                publicId: z.string().optional(),
             }),
         )
         .mutation(async ({ input }) => {
+            const session = await auth()
+
             return prisma.post.create({
                 data: {
                     title: input.title,
                     content: input.content,
                     img: input.img,
                     description: input.description,
-                    slug: input.slug,
                     updatedAt: new Date(),
+                    userEmail: session.user.email,
+                    publicId: input.publicId,
                 },
             })
         }),
-   
-
 })

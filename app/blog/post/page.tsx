@@ -1,8 +1,12 @@
 'use client'
+
 import { trpc } from '@/modules/infrastructure/api/trpc/client'
+import TipTap from 'components/TiipTap'
 import { CldUploadButton, CloudinaryUploadWidgetResults } from 'next-cloudinary'
 import Image from 'next/image'
+import { useRouter } from 'next/navigation'
 import { useState } from 'react'
+
 export default function PostBlog() {
     const [title, setTitle] = useState('')
     const [description, setDescription] = useState('')
@@ -10,15 +14,28 @@ export default function PostBlog() {
     const [imageUrl, setImageUrl] = useState('')
     const [publicId, setPublicId] = useState('')
 
-    const createPost = trpc.users.createPost.useMutation()
+    const utils = trpc.useUtils()
+    const router = useRouter()
+
+    const createPost = trpc.users.createPost.useMutation({
+        onSuccess: () => {
+            utils.posts.getPosts.invalidate(), router.push('/')
+        },
+        onError: err => {
+            console.error('❌ Error creating post:', err)
+        },
+    })
 
     const handleSubmit = async event => {
         event.preventDefault()
-        createPost.mutate({
+        await createPost.mutate({
             title,
             description,
             content,
+            img: imageUrl,
+            publicId: publicId,
         })
+       
     }
 
     const handleImageUpload = (result: CloudinaryUploadWidgetResults) => {
@@ -32,9 +49,9 @@ export default function PostBlog() {
     }
 
     return (
-        <div className="flex w-full flex-col items-center gap-[30px] p-9 pt-[90px]">
-            <h1 className="text-[35px] font-black">Post A blog</h1>
-            <form method="POST" onSubmit={handleSubmit}>
+        <div className="flex flex-col items-center gap-[30px] p-9 pt-[90px]">
+            <h1 className="text-[35px] font-black">Make a Post</h1>
+            <form onSubmit={handleSubmit}>
                 <div className="flex flex-row gap-[100px] max-lg:flex-col max-lg:gap-[40px]">
                     <div className="flex flex-col gap-[20px] max-lg:items-center">
                         <h1 className="text-[20px] font-medium">
@@ -46,7 +63,7 @@ export default function PostBlog() {
                             onSuccess={handleImageUpload}
                             className={`relative h-[300px] w-[300px] items-center rounded-md border-[2px] px-4 py-2 text-center text-[100px] font-semibold text-black ${imageUrl && 'pointer-events-none'}`}
                         >
-                            <div>+</div>
+                            <div className="hover:text-neutral-600">+</div>
                             {imageUrl && (
                                 <Image
                                     src={imageUrl}
@@ -57,30 +74,39 @@ export default function PostBlog() {
                             )}
                         </CldUploadButton>
                     </div>
-                    <div className="flex max-w-[700px] min-w-[400px] flex-col gap-[20px] pt-[40px]">
+                    <div className="flex max-w-[700px] min-w-[400px] flex-col gap-[20px] pt-[40px] max-lg:w-[900px] max-lg:items-center max-sm:w-[350px] max-sm:items-center">
                         <input
                             type="text"
                             placeholder="Title"
-                            className="h-[45px] max-w-[600px] min-w-[400px] rounded-md border-[2px] border-black pl-[5px] placeholder-black"
+                            className="h-[50px] max-w-[600px] min-w-[400px] rounded-md border-[2px] border-black pl-[5px] placeholder-black max-lg:w-[900px] max-lg:items-center max-sm:w-[300px] max-sm:min-w-[290px]"
                             onChange={e => setTitle(e.target.value)}
                         />
                         <input
                             type="text"
                             placeholder="Description"
-                            className="h-[45px] max-w-[600px] min-w-[400px] rounded-md border-[2px] border-black pl-[5px] placeholder-black"
+                            className="h-[50px] max-w-[600px] min-w-[400px] rounded-md border-[2px] border-black pl-[5px] placeholder-black max-lg:w-[900px] max-lg:items-center max-sm:w-[300px] max-sm:min-w-[290px]"
                             onChange={e => setDescription(e.target.value)}
                         />
-                        <textarea
+                        <TipTap content={content} onChange={setContent} />
+                        {/* <textarea
                             placeholder="Content"
                             className="h-[300px] max-w-[600px] min-w-[400px] rounded-md border-[2px] border-black pl-[5px] placeholder-black"
                             onChange={e => setContent(e.target.value)}
-                        ></textarea>
+                        ></textarea> */}
                         <button
-                            onSubmit={handleSubmit}
-                            type="submit"
-                            className="h-[30px] max-w-[100px] rounded-md bg-black text-white hover:bg-neutral-800"
+                            onClick={e => {
+                                e.preventDefault()
+                                createPost.mutate({
+                                    title,
+                                    description,
+                                    content,
+                                    img: imageUrl,
+                                })
+                            }}
+                            disabled={createPost.isPending}
+                            className="rounded bg-black px-4 py-2 text-white hover:bg-neutral-600 max-lg:w-[200px] max-lg:items-center max-sm:w-[300px] max-sm:min-w-[200px]"
                         >
-                            Send
+                            {createPost.isPending ? 'Posting...' : 'Post Blog'}
                         </button>
                     </div>
                 </div>

@@ -7,14 +7,20 @@ export const Footer = () => {
                 <div className="flex max-w-[700px] flex-col gap-[20px]">
                     <p className="text-[25px]">Blogged.</p>
                     <p className="sm:max-w-[800px]">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean
-                        bibendum eget justo eget blandit. Fusce vitae tempor turpis. Sed
-                        scelerisque elementum eros, a porta erat auctor sit amet. Mauris
-                        nec mi ornare ante hendrerit porta nec gravida nisl. Suspendisse
-                        vitae ligula consequat, tristique libero eu, facilisis quam.
+                        Where stories come alive and imagination knows no boundaries.
+        
                     </p>
                 </div>
                 <p> © 2025. All Rights Reserved.</p>
+                <p className="flex gap-[4px]">
+                    Built by
+                    <Link
+                        href="https://ayanfeoluwasogelola.netlify.app/"
+                        className="text-blue-400 hover:text-blue-200"
+                    >
+                        Ayanfeoluwa Sogelola
+                    </Link>
+                </p>
             </div>
             <div className="flex flex-row gap-[100px] max-sm:flex-col max-sm:gap-[40px] max-sm:pt-[30px]">
                 <div className="flex flex-col gap-[10px]">
