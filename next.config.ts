@@ -8,6 +8,9 @@ const nextConfig: NextConfig = {
             { protocol: 'https', hostname: 'res.cloudinary.com' },
         ],
     },
+    env: {
+        appUrl: process.env.APP_URL,
+    },
 }
 
 export default nextConfig
